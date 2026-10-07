@@ -29,7 +29,7 @@
 | 2 | AI가 아는 것과 모르는 것 | [바로가기](Lectures/Week02_AI가_아는것과_모르는것.md) |
 | 3 | 프롬프트 기초와 AI 사용 수칙 | [바로가기](Lectures/Week03_프롬프트_기초와_AI_사용_수칙.md) |
 | 4 | AI로 시장조사 | [바로가기](Lectures/Week04_AI로_시장조사.md) |
-| 5 | 기업과 산업 읽기 | 예정 |
+| 5 | 기업과 산업 읽기 | [바로가기](Lectures/Week05_기업과_산업_읽기.md) |
 | 6 | 분석 프레임 — 3C · SWOT · PEST | 예정 |
 | 7 | 소비자와 페르소나 | 예정 |
 | 8 | 중간고사 | — |
@@ -55,6 +55,7 @@
 |:--:|:--:|
 | 3 | [사본 만들기](https://docs.google.com/document/d/1B_4BDodKPgvaI2vTPSqx_VVBMdFcUbZRXTE_BsBHBmk/copy) |
 | 4 | [사본 만들기](https://docs.google.com/document/d/1sRfdxiU8K-6nMNgD-y5yySzpThyVV17DwjS5EDWi7rk/copy) |
+| 5 | [사본 만들기](https://docs.google.com/document/d/1NmFRJKs-YeQLzvDJSOFwNL4q0qPiG8b9cCoMDEV-pQE/copy) |
 
 ### 15주 구성
 
@@ -81,6 +82,7 @@
 
 | 날짜 | 내용 |
 |:--:|------|
+| 2026-10-07 | 5주 자료 게시 · 5주 기록 양식 링크 추가 · 「이번 주 AI 동향」에 5주 항목 추가 |
 | 2026-10-01 | 4주 자료·4주 시연 기록 게시 · 4주 기록 양식 링크 추가 · 「이번 주 AI 동향」 자료 신설 · 안내 문장 정리 |
 | 2026-09-17 | 활동 명칭 변경(조별 사이클 → 조별 실습) · 3주 자료 재게시 |
 | 2026-09-16 | 조별 사이클 기록 양식 안내·링크 추가(3주) · 문의 방법 변경(e-campus → 강의계획서 기재 이메일) |
