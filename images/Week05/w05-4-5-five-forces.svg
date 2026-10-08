@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#006199"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1600" height="900" fill="#F0F2F5"/>
+
+  <!-- 축 띠: 경쟁의 축(세로) · 협상의 축(가로) -->
+  <rect x="580" y="25" width="440" height="735" rx="24" fill="#0086CD" fill-opacity="0.08" stroke="#0086CD" stroke-width="2" stroke-dasharray="10 8"/>
+  <rect x="40" y="295" width="1520" height="190" rx="24" fill="#485A64" fill-opacity="0.08" stroke="#485A64" stroke-width="2" stroke-dasharray="10 8"/>
+
+  <!-- 범례 -->
+  <path d="M70,82 L150,82" stroke="#006199" stroke-width="5" marker-end="url(#ar)"/>
+  <text x="165" y="89" font-size="19" fill="#485A64">산업 수익성을 낮추는 압력</text>
+
+  <!-- 경쟁의 축 라벨 -->
+  <rect x="1060" y="56" width="190" height="44" rx="22" fill="#0086CD"/>
+  <text x="1155" y="86" font-size="23" font-weight="bold" fill="#FFFFFF" text-anchor="middle">경쟁의 축</text>
+  <text x="1060" y="134" font-size="19" font-weight="bold" fill="#006199">같은 시장 안의 압력 — 고객을 두고 경쟁</text>
+  <text x="1060" y="164" font-size="18" fill="#485A64">신규 진입 · 기존 경쟁 · 대체재 (세로)</text>
+
+  <!-- 협상의 축 라벨 -->
+  <rect x="70" y="512" width="190" height="44" rx="22" fill="#485A64"/>
+  <text x="165" y="542" font-size="23" font-weight="bold" fill="#FFFFFF" text-anchor="middle">협상의 축</text>
+  <text x="70" y="590" font-size="19" font-weight="bold" fill="#485A64">거래 관계의 압력 — 가격을 두고 협상</text>
+  <text x="70" y="620" font-size="18" fill="#485A64">공급자 협상력 · 구매자 협상력 (가로)</text>
+
+  <!-- 화살표 -->
+  <g stroke="#006199" stroke-width="5" marker-end="url(#ar)">
+    <path d="M800,192 L800,292"/>
+    <path d="M800,588 L800,488"/>
+    <path d="M442,390 L602,390"/>
+    <path d="M1158,390 L998,390"/>
+  </g>
+
+  <!-- 신규 진입 위협 (위) -->
+  <rect x="610" y="40" width="380" height="150" rx="14" fill="#FFFFFF" stroke="#0086CD" stroke-width="3"/>
+  <text x="800" y="82" font-size="26" font-weight="bold" fill="#006199" text-anchor="middle">신규 진입 위협</text>
+  <text x="800" y="120" font-size="20" fill="#485A64" text-anchor="middle">새 경쟁자가 들어오기 쉬운가</text>
+  <text x="800" y="164" font-size="17" fill="#0086CD" text-anchor="middle">높으면 → 경쟁자 증가 · 가격 하락</text>
+
+  <!-- 기존 경쟁 (가운데) -->
+  <rect x="610" y="300" width="380" height="180" rx="14" fill="#006199"/>
+  <text x="800" y="344" font-size="30" font-weight="bold" fill="#FFFFFF" text-anchor="middle">기존 경쟁</text>
+  <text x="800" y="384" font-size="20" fill="#FFFFFF" text-anchor="middle">같은 고객을 두고 다투는 회사가</text>
+  <text x="800" y="412" font-size="20" fill="#FFFFFF" text-anchor="middle">얼마나 많은가</text>
+  <text x="800" y="456" font-size="17" fill="#55C3F1" text-anchor="middle">높으면 → 가격 경쟁 · 마진 압박</text>
+
+  <!-- 대체재 위협 (아래) -->
+  <rect x="610" y="590" width="380" height="150" rx="14" fill="#FFFFFF" stroke="#0086CD" stroke-width="3"/>
+  <text x="800" y="630" font-size="26" font-weight="bold" fill="#006199" text-anchor="middle">대체재 위협</text>
+  <text x="800" y="664" font-size="20" fill="#485A64" text-anchor="middle">다른 방식으로 같은 문제를</text>
+  <text x="800" y="690" font-size="20" fill="#485A64" text-anchor="middle">해결할 수 있는가</text>
+  <text x="800" y="724" font-size="17" fill="#0086CD" text-anchor="middle">높으면 → 받을 수 있는 가격의 상한 형성</text>
+
+  <!-- 공급자 협상력 (왼쪽) -->
+  <rect x="60" y="315" width="380" height="150" rx="14" fill="#FFFFFF" stroke="#485A64" stroke-width="3"/>
+  <text x="250" y="356" font-size="26" font-weight="bold" fill="#485A64" text-anchor="middle">공급자 협상력</text>
+  <text x="250" y="392" font-size="20" fill="#485A64" text-anchor="middle">원료·재료를 쥔 쪽이</text>
+  <text x="250" y="418" font-size="20" fill="#485A64" text-anchor="middle">가격을 정하는가</text>
+  <text x="250" y="451" font-size="17" fill="#006199" text-anchor="middle">높으면 → 원가 상승</text>
+
+  <!-- 구매자 협상력 (오른쪽) -->
+  <rect x="1160" y="315" width="380" height="150" rx="14" fill="#FFFFFF" stroke="#485A64" stroke-width="3"/>
+  <text x="1350" y="356" font-size="26" font-weight="bold" fill="#485A64" text-anchor="middle">구매자 협상력</text>
+  <text x="1350" y="402" font-size="20" fill="#485A64" text-anchor="middle">고객이 쉽게 떠날 수 있는가</text>
+  <text x="1350" y="451" font-size="17" fill="#006199" text-anchor="middle">높으면 → 가격 인하 요구</text>
+
+  <!-- 판정 안내 (오른쪽 아래) -->
+  <rect x="1060" y="560" width="480" height="150" rx="14" fill="#FFFFFF" stroke="#55C3F1" stroke-width="2"/>
+  <text x="1080" y="598" font-size="20" font-weight="bold" fill="#006199">판정 방법</text>
+  <text x="1080" y="634" font-size="18" fill="#485A64">압력마다 높음 · 중간 · 낮음 + 근거 한 줄</text>
+  <text x="1080" y="666" font-size="18" fill="#485A64">판정 전에 산업 경계를 먼저 정한다</text>
+  <text x="1080" y="696" font-size="18" fill="#485A64">다섯 개 모두 「중간」은 결론이 없는 판정</text>
+
+  <!-- 하단 띠 -->
+  <rect x="0" y="790" width="1600" height="72" fill="#006199"/>
+  <text x="800" y="836" font-size="28" font-weight="bold" fill="#FFFFFF" text-anchor="middle">다섯 압력이 모두 강하면 그 산업은 구조적으로 이익을 내기 어렵다</text>
+</svg>

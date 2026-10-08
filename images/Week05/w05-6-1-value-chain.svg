@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <linearGradient id="hl" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#55C3F1"/>
+      <stop offset="1" stop-color="#0086CD"/>
+    </linearGradient>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2EA7E0"/>
+    </marker>
+    <marker id="ard" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#006199"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1600" height="900" fill="#F0F2F5"/>
+
+  <!-- 위 단: 가치사슬 흐름 -->
+  <rect x="850" y="56" width="400" height="40" rx="20" fill="#FFFFFF" stroke="#2EA7E0" stroke-width="2"/>
+  <text x="1050" y="83" font-size="19" fill="#006199" text-anchor="middle">오프라인 → 이커머스 · <tspan font-weight="bold">이익의 몫이 이동</tspan></text>
+  <path d="M1050,98 L1050,118" stroke="#2EA7E0" stroke-width="3" marker-end="url(#ar)"/>
+
+  <g fill="#55C3F1" fill-opacity="0.35" stroke="#55C3F1" stroke-width="2">
+    <rect x="450" y="125" width="200" height="75" rx="12"/>
+    <rect x="700" y="125" width="200" height="75" rx="12"/>
+    <rect x="950" y="125" width="200" height="75" rx="12"/>
+    <rect x="1200" y="125" width="200" height="75" rx="12"/>
+  </g>
+  <g font-size="24" font-weight="bold" fill="#006199" text-anchor="middle">
+    <text x="550" y="171">원료</text>
+    <text x="800" y="171">제조</text>
+    <text x="1050" y="171">유통</text>
+    <text x="1300" y="171">판매·서비스</text>
+  </g>
+  <g stroke="#2EA7E0" stroke-width="3" marker-end="url(#ar)">
+    <path d="M652,162 L696,162"/>
+    <path d="M902,162 L946,162"/>
+    <path d="M1152,162 L1196,162"/>
+  </g>
+
+  <!-- 대응 점선 (제조 ↔ 제조·조립 · 판매·서비스 ↔ 브랜드·서비스) -->
+  <g stroke="#485A64" stroke-width="2" stroke-dasharray="6 8">
+    <path d="M800,200 L800,600"/>
+    <path d="M1300,200 L1300,388"/>
+  </g>
+
+  <!-- 아래 단: 스마일 커브 -->
+  <g stroke="#485A64" stroke-width="2">
+    <path d="M200,330 L200,730"/>
+    <path d="M200,730 L1420,730"/>
+  </g>
+  <text x="200" y="318" font-size="20" font-weight="bold" fill="#485A64" text-anchor="middle">부가가치</text>
+  <text x="188" y="352" font-size="18" fill="#485A64" text-anchor="end">높음</text>
+  <text x="188" y="726" font-size="18" fill="#485A64" text-anchor="end">낮음</text>
+  <text x="1420" y="762" font-size="20" font-weight="bold" fill="#485A64" text-anchor="end">가치사슬 단계</text>
+
+  <path d="M300,400 C450,680 1150,680 1300,400" fill="none" stroke="#0086CD" stroke-width="6"/>
+
+  <!-- 양끝 강조 -->
+  <circle cx="300" cy="400" r="13" fill="url(#hl)"/>
+  <circle cx="1300" cy="400" r="13" fill="url(#hl)"/>
+  <text x="275" y="408" font-size="24" font-weight="bold" fill="#006199" text-anchor="end">연구개발</text>
+  <text x="1325" y="408" font-size="24" font-weight="bold" fill="#006199">브랜드·서비스</text>
+  <rect x="125" y="424" width="150" height="30" rx="15" fill="#0086CD"/>
+  <text x="200" y="445" font-size="17" font-weight="bold" fill="#FFFFFF" text-anchor="middle">부가가치 높음</text>
+  <rect x="1325" y="424" width="150" height="30" rx="15" fill="#0086CD"/>
+  <text x="1400" y="445" font-size="17" font-weight="bold" fill="#FFFFFF" text-anchor="middle">부가가치 높음</text>
+
+  <!-- 가운데: 가격 압력 -->
+  <circle cx="800" cy="610" r="8" fill="#485A64"/>
+  <g stroke="#006199" stroke-width="4" marker-end="url(#ard)">
+    <path d="M700,634 L758,634"/>
+    <path d="M900,634 L842,634"/>
+  </g>
+  <text x="800" y="664" font-size="24" font-weight="bold" fill="#006199" text-anchor="middle">제조·조립</text>
+  <rect x="740" y="676" width="120" height="30" rx="15" fill="#006199"/>
+  <text x="800" y="697" font-size="17" font-weight="bold" fill="#FFFFFF" text-anchor="middle">가격 압력</text>
+
+  <!-- 하단 띠 -->
+  <rect x="0" y="800" width="1600" height="72" fill="#006199"/>
+  <text x="800" y="846" font-size="28" font-weight="bold" fill="#FFFFFF" text-anchor="middle">이익은 단계마다 고르게 생기지 않는다</text>
+</svg>

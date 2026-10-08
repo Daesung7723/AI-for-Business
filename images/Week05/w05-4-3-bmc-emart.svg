@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <linearGradient id="hl" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#55C3F1"/>
+      <stop offset="1" stop-color="#0086CD"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1600" height="900" fill="#F0F2F5"/>
+
+  <!-- 영역 라벨 -->
+  <rect x="280" y="52" width="120" height="40" rx="20" fill="#485A64"/>
+  <text x="340" y="80" font-size="22" font-weight="bold" fill="#FFFFFF" text-anchor="middle">실행</text>
+  <rect x="1020" y="52" width="120" height="40" rx="20" fill="#0086CD"/>
+  <text x="1080" y="80" font-size="22" font-weight="bold" fill="#FFFFFF" text-anchor="middle">약속</text>
+
+  <!-- 칸 (위쪽 5열) -->
+  <g fill="#FFFFFF" stroke="#55C3F1" stroke-width="2">
+    <rect x="60" y="110" width="280" height="430"/>
+    <rect x="340" y="110" width="280" height="215"/>
+    <rect x="340" y="325" width="280" height="215"/>
+    <rect x="920" y="110" width="280" height="215"/>
+    <rect x="920" y="325" width="280" height="215"/>
+    <rect x="60" y="540" width="740" height="200"/>
+  </g>
+  <!-- 강조 세 칸: 가치 제안 · 고객 세그먼트 · 수익원 -->
+  <g fill="#FFFFFF" stroke="#0086CD" stroke-width="4">
+    <rect x="620" y="110" width="300" height="430"/>
+    <rect x="1200" y="110" width="340" height="430"/>
+    <rect x="800" y="540" width="740" height="200"/>
+  </g>
+
+  <!-- 삼각형 점선 (강조 요소) -->
+  <polygon points="770,500 1370,500 1250,660" fill="none" stroke="url(#hl)" stroke-width="5" stroke-dasharray="14 10"/>
+  <circle cx="770" cy="500" r="9" fill="url(#hl)"/>
+  <circle cx="1370" cy="500" r="9" fill="url(#hl)"/>
+  <circle cx="1250" cy="660" r="9" fill="url(#hl)"/>
+
+  <!-- 재무 라벨 -->
+  <rect x="752" y="526" width="96" height="30" rx="15" fill="#485A64"/>
+  <text x="800" y="547" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">재무</text>
+
+  <!-- 칸 머리 배지 -->
+  <g fill="#006199">
+    <rect x="74" y="124" width="150" height="34" rx="6"/>
+    <rect x="354" y="124" width="112" height="34" rx="6"/>
+    <rect x="354" y="339" width="112" height="34" rx="6"/>
+    <rect x="634" y="124" width="112" height="34" rx="6"/>
+    <rect x="934" y="124" width="112" height="34" rx="6"/>
+    <rect x="934" y="339" width="70" height="34" rx="6"/>
+    <rect x="1214" y="124" width="150" height="34" rx="6"/>
+    <rect x="74" y="566" width="112" height="34" rx="6"/>
+    <rect x="814" y="566" width="90" height="34" rx="6"/>
+  </g>
+  <g font-size="20" font-weight="bold" fill="#FFFFFF">
+    <text x="84" y="148">핵심 파트너십</text>
+    <text x="364" y="148">핵심 활동</text>
+    <text x="364" y="363">핵심 자원</text>
+    <text x="644" y="148">가치 제안</text>
+    <text x="944" y="148">고객 관계</text>
+    <text x="944" y="363">채널</text>
+    <text x="1224" y="148">고객 세그먼트</text>
+    <text x="84" y="590">비용 구조</text>
+    <text x="824" y="590">수익원</text>
+  </g>
+
+  <!-- 칸 안 항목 (4.3 표 축약) -->
+  <g font-size="20" fill="#485A64">
+    <text x="84" y="196">제조·납품업체</text>
+    <text x="84" y="230">입점 임차 매장</text>
+    <text x="84" y="264">물류 협력사</text>
+
+    <text x="364" y="196">상품 매입</text>
+    <text x="364" y="230">자체 브랜드 기획</text>
+    <text x="364" y="264">점포 운영·물류</text>
+
+    <text x="364" y="411">점포 입지</text>
+    <text x="364" y="445">물류센터</text>
+    <text x="364" y="479">매입 규모</text>
+    <text x="364" y="513">자체 브랜드</text>
+
+    <text x="644" y="196">한 번에 끝나는 구색</text>
+    <text x="644" y="230">가격 경쟁력</text>
+    <text x="644" y="264">신선식품</text>
+    <text x="644" y="298">자체 브랜드</text>
+
+    <text x="944" y="196">멤버십 포인트</text>
+    <text x="944" y="230">정기 할인 행사</text>
+
+    <text x="944" y="411">대형마트 점포</text>
+    <text x="944" y="445">트레이더스</text>
+    <text x="944" y="479">온라인몰</text>
+
+    <text x="1224" y="196">주 단위로 장을 보는 가구</text>
+    <text x="1224" y="230">트레이더스 이용자</text>
+    <text x="1224" y="264">온라인 주문 고객</text>
+
+    <text x="84" y="640">매출원가(상품 매입) — 가장 큼</text>
+    <text x="84" y="676">인건비 · 임차료 · 물류비</text>
+
+    <text x="824" y="640">상품 판매 마진</text>
+    <text x="824" y="676">점포 내 임대 수익</text>
+    <text x="824" y="712">자체 브랜드</text>
+  </g>
+
+  <!-- 하단 띠 -->
+  <rect x="0" y="790" width="1600" height="72" fill="#006199"/>
+  <text x="800" y="836" font-size="28" font-weight="bold" fill="#FFFFFF" text-anchor="middle">오른쪽은 약속, 왼쪽은 그 약속을 지키는 실행</text>
+</svg>
