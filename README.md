@@ -8,13 +8,16 @@
 
 경영경제 문제를 AI로 **조사·검증·해석·보고**하는 훈련 과목입니다. AI를 만들거나 프로그래밍하는 과목이 아니라, 이미 공개된 AI를 경영경제 문제에 활용하고 **그 답을 검증하는 법**을 다룹니다.
 
+6주부터는 매주 한 번 AI가 작성한 짧은 코드를 Google Colab에서 실행해 공공 통계의 공식 값을 확보하고 AI의 답과 대조합니다. 평가 대상은 코드가 아니라 **검증 과정**이며, 코드 사용 자체에 가점은 없습니다.
+
 | 항목 | 내용 |
 |---|---|
 | 기간 | 2026-09-03 \~ 12월 (목요일 · 15주 3학점) |
 | 분반 | 4분반 15:00–18:00 · 10분반 18:00–20:40 |
 | 권장 도구 | Gemini + Gemini Notebook(구 NotebookLM) — **학교 Google 계정(@dankook.ac.kr)** 무료 제공. 이미 사용 중인 AI 계정이 있으면 그대로 사용 가능 |
 | 비교 체험 | ChatGPT · Perplexity (무료) |
-| 준비물 | **AI 계정** — 실습은 강의실 PC로 진행 · 개인 기기(스마트폰·태블릿·노트북) 사용도 가능 |
+| 실행 환경 | Google Colab(6주부터 코드 실습) — 학교 또는 개인 Google 계정 · 설치 없음 · 무료 |
+| 준비물 | **AI 계정** — 실습은 강의실 PC로 진행 · 개인 기기(스마트폰·태블릿·노트북) 사용도 가능 · 6주부터 Google 계정(학교 또는 개인) 추가 |
 | 최종 제출물 | 분석보고서 — 두 트랙(기업·산업 분석 / 아이디어 검증) 중 선택 |
 
 ### 강의 자료
@@ -30,7 +33,7 @@
 | 3 | 프롬프트 기초와 AI 사용 수칙 | [바로가기](Lectures/Week03_프롬프트_기초와_AI_사용_수칙.md) |
 | 4 | AI로 시장조사 | [바로가기](Lectures/Week04_AI로_시장조사.md) |
 | 5 | 기업과 산업 읽기 | [바로가기](Lectures/Week05_기업과_산업_읽기.md) |
-| 6 | 분석 프레임 — 3C · SWOT · PEST | 예정 |
+| 6 | 분석 프레임 — 3C · SWOT · PEST | [바로가기](Lectures/Week06_분석_프레임_3C_SWOT_PEST.md) |
 | 7 | 소비자와 페르소나 | 예정 |
 | 8 | 중간고사 | — |
 | 9 | 노코드 데이터 분석 | 예정 |
@@ -56,6 +59,7 @@
 | 3 | [사본 만들기](https://docs.google.com/document/d/1B_4BDodKPgvaI2vTPSqx_VVBMdFcUbZRXTE_BsBHBmk/copy) |
 | 4 | [사본 만들기](https://docs.google.com/document/d/1sRfdxiU8K-6nMNgD-y5yySzpThyVV17DwjS5EDWi7rk/copy) |
 | 5 | [사본 만들기](https://docs.google.com/document/d/1NmFRJKs-YeQLzvDJSOFwNL4q0qPiG8b9cCoMDEV-pQE/copy) |
+| 6 | [사본 만들기](https://docs.google.com/document/d/1t0VoqG_cie2dx-4blyy-Jp5BARKjWBvkhb9ttRyu6po/copy) |
 
 ### 15주 구성
 
@@ -82,6 +86,7 @@
 
 | 날짜 | 내용 |
 |:--:|------|
+| 2026-10-14 | 6주 자료 게시 · 6주 기록 양식 링크 추가 · 「이번 주 AI 동향」에 6주 항목 추가 · 과목 안내에 6주부터의 코드 실습(Google Colab) 안내와 「실행 환경」 행 추가 · 준비물에 Google 계정 추가 |
 | 2026-10-07 | 5주 자료 게시 · 5주 기록 양식 링크 추가 · 「이번 주 AI 동향」에 5주 항목 추가 |
 | 2026-10-01 | 4주 자료·4주 시연 기록 게시 · 4주 기록 양식 링크 추가 · 「이번 주 AI 동향」 자료 신설 · 안내 문장 정리 |
 | 2026-09-17 | 활동 명칭 변경(조별 사이클 → 조별 실습) · 3주 자료 재게시 |
