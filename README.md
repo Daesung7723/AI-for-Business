@@ -16,7 +16,7 @@
 | 분반 | 4분반 15:00–18:00 · 10분반 18:00–20:40 |
 | 권장 도구 | Gemini + Gemini Notebook(구 NotebookLM) — **학교 Google 계정(@dankook.ac.kr)** 무료 제공. 이미 사용 중인 AI 계정이 있으면 그대로 사용 가능 |
 | 비교 체험 | ChatGPT · Perplexity (무료) |
-| 실행 환경 | Google Colab(6주부터 코드 실습) — 학교 또는 개인 Google 계정 · 설치 없음 · 무료 |
+| 실행 환경 | Google Colab(6주부터 코드 실습) — 학교 또는 개인 Google 계정 · 설치 없음 · 무료 · 7주부터 공식 통계 사이트의 인증키를 각자 발급(수업 중 진행 · 무료) |
 | 준비물 | **AI 계정** — 실습은 강의실 PC로 진행 · 개인 기기(스마트폰·태블릿·노트북) 사용도 가능 · 6주부터 Google 계정(학교 또는 개인) 추가 |
 | 최종 제출물 | 분석보고서 — 두 트랙(기업·산업 분석 / 아이디어 검증) 중 선택 |
 
@@ -34,7 +34,7 @@
 | 4 | AI로 시장조사 | [바로가기](Lectures/Week04_AI로_시장조사.md) |
 | 5 | 기업과 산업 읽기 | [바로가기](Lectures/Week05_기업과_산업_읽기.md) |
 | 6 | 분석 프레임 — 3C · SWOT · PEST | [바로가기](Lectures/Week06_분석_프레임_3C_SWOT_PEST.md) |
-| 7 | 소비자와 페르소나 | 예정 |
+| 7 | 소비자와 페르소나 | [바로가기](Lectures/Week07_소비자와_페르소나.md) |
 | 8 | 중간고사 | — |
 | 9 | 노코드 데이터 분석 | 예정 |
 | 10 | 경제지표와 뉴스 해석 | 예정 |
@@ -60,6 +60,7 @@
 | 4 | [사본 만들기](https://docs.google.com/document/d/1sRfdxiU8K-6nMNgD-y5yySzpThyVV17DwjS5EDWi7rk/copy) |
 | 5 | [사본 만들기](https://docs.google.com/document/d/1NmFRJKs-YeQLzvDJSOFwNL4q0qPiG8b9cCoMDEV-pQE/copy) |
 | 6 | [사본 만들기](https://docs.google.com/document/d/1t0VoqG_cie2dx-4blyy-Jp5BARKjWBvkhb9ttRyu6po/copy) |
+| 7 | [사본 만들기](https://docs.google.com/document/d/17tXD4EMnP61F-E4h20EhnnCel26bHyFuNeXJTJJk42U/copy) |
 
 ### 15주 구성
 
@@ -86,6 +87,7 @@
 
 | 날짜 | 내용 |
 |:--:|------|
+| 2026-10-22 | 7주 자료 게시 · 7주 기록 양식 링크 추가 · 「이번 주 AI 동향」에 7주 항목 추가 · 「실행 환경」에 7주부터의 인증키 발급 안내 추가 |
 | 2026-10-14 | 6주 자료 게시 · 6주 기록 양식 링크 추가 · 「이번 주 AI 동향」에 6주 항목 추가 · 과목 안내에 6주부터의 코드 실습(Google Colab) 안내와 「실행 환경」 행 추가 · 준비물에 Google 계정 추가 |
 | 2026-10-07 | 5주 자료 게시 · 5주 기록 양식 링크 추가 · 「이번 주 AI 동향」에 5주 항목 추가 |
 | 2026-10-01 | 4주 자료·4주 시연 기록 게시 · 4주 기록 양식 링크 추가 · 「이번 주 AI 동향」 자료 신설 · 안내 문장 정리 |
