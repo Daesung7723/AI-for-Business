@@ -105,7 +105,7 @@ for name, s, r in pts:                         # 지역을 하나씩 점으로
 ax.axhline(nat, color="#9AA3A9", linewidth=0.8, linestyle="--")  # 전국 비중 기준선
 ax.axvline(mid, color="#9AA3A9", linewidth=0.8, linestyle="--")  # 규모 중앙값 기준선
 hot_names = [n for n, s, r in pts if s >= mid and r >= nat]  # 오른쪽 위(규모 · 비중 모두 높은) 지역
-ax.set_title(f"규모도 크고 몰려 있는 지역: {' · '.join(hot_names)}", loc="left", fontsize=12)  # 인사이트를 제목으로
+ax.set_title(f"규모가 크고 집중된 지역: {' · '.join(hot_names)}", loc="left", fontsize=12)  # 인사이트를 제목으로
 ax.set_xlabel("세그먼트 규모(만 가구)")          # 가로축 이름
 ax.set_ylabel("지역 일반가구 중 세그먼트 비중(%)")  # 세로축 이름
 tidy(ax)                                      # 테두리 · 격자 정리
