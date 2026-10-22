@@ -60,7 +60,7 @@
 | 4 | [사본 만들기](https://docs.google.com/document/d/1sRfdxiU8K-6nMNgD-y5yySzpThyVV17DwjS5EDWi7rk/copy) |
 | 5 | [사본 만들기](https://docs.google.com/document/d/1NmFRJKs-YeQLzvDJSOFwNL4q0qPiG8b9cCoMDEV-pQE/copy) |
 | 6 | [사본 만들기](https://docs.google.com/document/d/1t0VoqG_cie2dx-4blyy-Jp5BARKjWBvkhb9ttRyu6po/copy) |
-| 7 | [사본 만들기](https://docs.google.com/document/d/17tXD4EMnP61F-E4h20EhnnCel26bHyFuNeXJTJJk42U/copy) |
+| 7 | [사본 만들기](https://docs.google.com/document/d/1J-85-DQxT1wuGb8gCejxlkif_b_r-i8cIDsLi73QL-8/copy) |
 
 ### 15주 구성
 
@@ -87,6 +87,7 @@
 
 | 날짜 | 내용 |
 |:--:|------|
+| 2026-10-22 (2차) | 7주 기록 양식 교체 — 실습 5 심화 분석 칸 반영 |
 | 2026-10-22 | 7주 자료 게시 · 7주 기록 양식 링크 추가 · 「이번 주 AI 동향」에 7주 항목 추가 · 「실행 환경」에 7주부터의 인증키 발급 안내 추가 |
 | 2026-10-14 | 6주 자료 게시 · 6주 기록 양식 링크 추가 · 「이번 주 AI 동향」에 6주 항목 추가 · 과목 안내에 6주부터의 코드 실습(Google Colab) 안내와 「실행 환경」 행 추가 · 준비물에 Google 계정 추가 |
 | 2026-10-07 | 5주 자료 게시 · 5주 기록 양식 링크 추가 · 「이번 주 AI 동향」에 5주 항목 추가 |
