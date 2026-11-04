@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"><title>기저 효과</title><desc>편의점 총계 전년동월대비 증감률이 2025년 2월 −5.2%, 2026년 2월 +4.0%이며 2025년 2월이 2026년 2월의 비교 기준이다. 두 달 모두 15개사 기준이다.</desc><defs><marker id="i3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#2EA7E0" stroke-width="1.5"/></marker></defs><rect width="680" height="300" fill="#FFFFFF"/>
+<text x="340" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#485A64">편의점 총계 · 전년동월대비 증감률 · 두 달 모두 15개사 기준</text>
+<line x1="90" y1="115" x2="590" y2="115" stroke="#485A64" stroke-width="0.75"/><text x="80" y="120" text-anchor="end" font-size="12" fill="#485A64">0%</text>
+<rect x="170" y="115" width="90" height="42" fill="#55C3F1"/><rect x="430" y="83" width="90" height="32" fill="#0086CD"/>
+<g text-anchor="middle" font-weight="700"><text x="215" y="178" font-size="16" fill="#006199">−5.2%</text><text x="475" y="75" font-size="16" fill="#006199">+4.0%</text></g>
+<g font-size="13" text-anchor="middle" fill="#485A64"><text x="215" y="100">2025년 2월</text><text x="215" y="82" font-size="12">36개월 최저</text><text x="475" y="138">2026년 2월</text></g>
+<path d="M260 140 H345 V99 H428" fill="none" stroke="#2EA7E0" stroke-width="1.5" marker-end="url(#i3)"/><text x="345" y="160" text-anchor="middle" font-size="12" fill="#485A64">비교 기준이 됨</text>
+<text x="340" y="222" text-anchor="middle" font-size="12" fill="#485A64">매출 수준 값은 이 표에 없음 → 보도자료로 확인</text>
+<rect x="20" y="248" width="640" height="34" rx="4" fill="#006199"/><text x="340" y="270" text-anchor="middle" fill="#FFFFFF" font-size="13">기준 달이 낮으면 다음 해 증감률은 높게 나올 수 있다 → 두 달을 함께 읽는다</text></svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" role="img" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"><title>평균소득과 중위소득</title><desc>오른쪽으로 꼬리가 긴 소득 분포에서 중위소득 278만 원과 평균소득 363만 원의 위치와 85만 원 차이를 표시한다.</desc><defs><marker id="i2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#485A64" stroke-width="1.5"/></marker></defs><rect width="680" height="320" fill="#FFFFFF"/>
+<path d="M50 240 C110 240 140 70 200 70 C270 70 300 170 380 205 C460 232 540 236 640 239 L640 240 Z" fill="#E8F5FC" stroke="#0086CD" stroke-width="1.5"/>
+<line x1="40" y1="240" x2="650" y2="240" stroke="#485A64" stroke-width="0.75"/>
+<line x1="245" y1="240" x2="245" y2="62" stroke="#006199" stroke-width="2"/><line x1="350" y1="240" x2="350" y2="62" stroke="#0086CD" stroke-width="2" stroke-dasharray="6 4"/>
+<g font-size="14" font-weight="700" text-anchor="middle"><text x="225" y="36" fill="#006199">중위소득 278만 원</text><text x="385" y="36" fill="#0086CD">평균소득 363만 원</text></g>
+<line x1="247" y1="52" x2="348" y2="52" stroke="#485A64" stroke-width="1" marker-start="url(#i2)" marker-end="url(#i2)"/><text x="298" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="#485A64">85만 원 차이</text>
+<g font-size="12" fill="#485A64"><text x="480" y="170">소득이 높은 방향으로 긴 꼬리</text><text x="480" y="188">큰 값 일부가 평균을 높임</text><text x="640" y="258" text-anchor="end">월 소득 →</text><text x="50" y="258">곡선 모양은 설명용(2023년 12월 기준 값만 실제)</text></g>
+<rect x="20" y="274" width="640" height="30" rx="4" fill="#006199"/><text x="340" y="294" text-anchor="middle" fill="#FFFFFF" font-size="13">보통의 근로자 소득은 평균보다 중위소득에 가깝다</text></svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"><title>상관과 인과</title><desc>아이스크림 판매량과 물놀이 사고 건수는 함께 움직이지만 원인 관계가 아니며, 기온이라는 제3의 요인이 두 값에 함께 작용한다.</desc><defs><marker id="a5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#2EA7E0" stroke-width="1.5"/></marker></defs><rect width="680" height="300" fill="#FFFFFF"/>
+<text x="150" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#485A64">함께 움직인다</text>
+<g fill="none" stroke="#485A64" stroke-width="0.75"><line x1="40" y1="46" x2="40" y2="190"/><line x1="40" y1="190" x2="270" y2="190"/></g>
+<polyline points="50,160 95,130 140,80 185,60 230,105 262,140" fill="none" stroke="#006199" stroke-width="2.5"/><polyline points="50,178 95,152 140,108 185,90 230,132 262,164" fill="none" stroke="#55C3F1" stroke-width="2.5" stroke-dasharray="7 4"/>
+<g font-size="12" fill="#485A64"><line x1="40" y1="212" x2="66" y2="212" stroke="#006199" stroke-width="2.5"/><text x="72" y="216">아이스크림 판매량</text><line x1="40" y1="232" x2="66" y2="232" stroke="#55C3F1" stroke-width="2.5" stroke-dasharray="7 4"/><text x="72" y="236">물놀이 사고 건수</text></g>
+<rect x="430" y="24" width="120" height="52" rx="8" fill="#0086CD"/><text x="490" y="47" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="700">기온</text><text x="490" y="65" text-anchor="middle" fill="#FFFFFF" font-size="12">제3의 요인</text>
+<g fill="#FFFFFF" stroke="#485A64" stroke-width="0.75"><rect x="320" y="150" width="130" height="52" rx="6"/><rect x="530" y="150" width="130" height="52" rx="6"/></g>
+<g text-anchor="middle" font-size="13" fill="#485A64"><text x="385" y="181">아이스크림 판매량</text><text x="595" y="181">물놀이 사고 건수</text></g>
+<g fill="none" stroke="#2EA7E0" stroke-width="1.25" marker-end="url(#a5)"><path d="M460 76V112H385V148"/><path d="M520 76V112H595V148"/></g>
+<line x1="450" y1="176" x2="530" y2="176" stroke="#485A64" stroke-width="1" stroke-dasharray="5 4"/><text x="490" y="168" text-anchor="middle" font-size="12" fill="#485A64">원인 아님</text>
+<rect x="20" y="256" width="640" height="30" rx="4" fill="#006199"/><text x="340" y="276" text-anchor="middle" fill="#FFFFFF" font-size="13">함께 움직이는 것과 원인인 것은 다르다</text></svg>
