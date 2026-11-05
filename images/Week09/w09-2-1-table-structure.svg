@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" role="img" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"><title>분석용 표의 행과 열</title><desc>월별 점포 매출 예시 표에서 첫 줄은 열 이름 한 층, 한 행은 관측 하나, 한 열은 항목 하나이며 합계는 표 밖에 따로 둔다.</desc><rect width="680" height="360" fill="#FFFFFF"/>
+<text x="340" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#485A64">분석용 표의 구성 원칙 · 월별 점포 매출(예시 수치)</text>
+<rect x="30" y="50" width="380" height="36" fill="#006199"/>
+<rect x="270" y="86" width="140" height="144" fill="#55C3F1" fill-opacity="0.28"/>
+<g stroke="#485A64" stroke-width="0.75"><line x1="30" y1="122" x2="410" y2="122"/><line x1="30" y1="158" x2="410" y2="158"/><line x1="30" y1="194" x2="410" y2="194"/><line x1="150" y1="86" x2="150" y2="230"/><line x1="270" y1="86" x2="270" y2="230"/><rect x="30" y="50" width="380" height="180" fill="none"/></g>
+<rect x="30" y="86" width="380" height="36" fill="none" stroke="#0086CD" stroke-width="2.5"/>
+<rect x="270" y="86" width="140" height="144" fill="none" stroke="#2EA7E0" stroke-width="2.5"/>
+<g font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle"><text x="90" y="73">연월</text><text x="210" y="73">점포</text><text x="340" y="73">매출액(만 원)</text></g>
+<g font-size="14" fill="#485A64" text-anchor="middle"><text x="90" y="109">2026-03</text><text x="210" y="109">서울점</text><text x="90" y="145">2026-03</text><text x="210" y="145">부산점</text><text x="90" y="181">2026-04</text><text x="210" y="181">서울점</text><text x="90" y="217">2026-04</text><text x="210" y="217">부산점</text></g>
+<g font-size="14" fill="#485A64" text-anchor="end"><text x="392" y="109">1,200</text><text x="392" y="145">900</text><text x="392" y="181">1,300</text><text x="392" y="217">950</text></g>
+<rect x="270" y="252" width="140" height="34" fill="#FFFFFF" stroke="#485A64" stroke-width="1" stroke-dasharray="5 4"/><text x="90" y="274" text-anchor="middle" font-size="14" fill="#485A64">합계</text><text x="392" y="274" text-anchor="end" font-size="14" font-weight="700" fill="#485A64">4,350</text>
+<g fill="none" stroke-width="1.5"><line x1="410" y1="68" x2="432" y2="68" stroke="#006199"/><line x1="410" y1="104" x2="432" y2="104" stroke="#0086CD"/><line x1="410" y1="176" x2="432" y2="176" stroke="#2EA7E0"/><line x1="410" y1="269" x2="432" y2="269" stroke="#485A64"/></g>
+<g font-size="14" font-weight="700"><text x="438" y="73" fill="#006199">첫 줄 = 열 이름 한 층</text><text x="438" y="109" fill="#0086CD">한 행 = 관측 하나</text><text x="438" y="181" fill="#006199">한 열 = 항목 하나</text><text x="438" y="274" fill="#485A64">합계 · 소계 = 표 밖에 따로</text></g>
+<g font-size="12" fill="#485A64"><text x="438" y="128">2026-03 · 서울점 · 1,200만 원</text><text x="438" y="200">이 열의 값 = 매출액뿐</text></g>
+<rect x="20" y="308" width="640" height="34" rx="4" fill="#006199"/><text x="340" y="330" text-anchor="middle" fill="#FFFFFF" font-size="13">소계 행이 표 안에 섞이면 관측으로 계산되어 합계가 두 번 더해질 수 있다</text></svg>
