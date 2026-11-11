@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" role="img" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+<title>기준금리와 편의점 매출 증감률</title><desc>실습 파일의 2024-01부터 2026-09까지 33개월 값으로 그린 두 지표의 월별 차트. 기준금리가 바뀐 달 6개를 점선으로 표시했다. 편의점 매출 증감률은 2026-08과 2026-09가 아직 발표되지 않아 비어 있다.</desc>
+<rect width="680" height="380" fill="#FFFFFF"/>
+<text x="80" y="32" font-size="13" font-weight="700" fill="#006199">기준금리(연%)</text>
+<text x="80" y="184" font-size="13" font-weight="700" fill="#006199">편의점 매출 증감률(%, 전년동월대비)</text>
+<rect x="80" y="44" width="570" height="106" fill="#F7F9FB" stroke="#C9D2D8" stroke-width="0.75"/>
+<rect x="80" y="196" width="570" height="110" fill="#F7F9FB" stroke="#C9D2D8" stroke-width="0.75"/>
+<line x1="80" y1="132.3" x2="650" y2="132.3" stroke="#E1E6EA" stroke-width="0.75"/><text x="74" y="136.3" font-size="10" fill="#485A64" text-anchor="end">2.50</text>
+<line x1="80" y1="97.0" x2="650" y2="97.0" stroke="#E1E6EA" stroke-width="0.75"/><text x="74" y="101.0" font-size="10" fill="#485A64" text-anchor="end">3.00</text>
+<line x1="80" y1="61.7" x2="650" y2="61.7" stroke="#E1E6EA" stroke-width="0.75"/><text x="74" y="65.7" font-size="10" fill="#485A64" text-anchor="end">3.50</text>
+<line x1="80" y1="299.1" x2="650" y2="299.1" stroke="#E1E6EA" stroke-width="0.75"/><text x="74" y="303.1" font-size="10" fill="#485A64" text-anchor="end">-5</text>
+<line x1="80" y1="264.8" x2="650" y2="264.8" stroke="#9AA7B0" stroke-width="0.75"/><text x="74" y="268.8" font-size="10" fill="#485A64" text-anchor="end">0</text>
+<line x1="80" y1="230.4" x2="650" y2="230.4" stroke="#E1E6EA" stroke-width="0.75"/><text x="74" y="234.4" font-size="10" fill="#485A64" text-anchor="end">5</text>
+<line x1="80" y1="196.0" x2="650" y2="196.0" stroke="#E1E6EA" stroke-width="0.75"/><text x="74" y="200.0" font-size="10" fill="#485A64" text-anchor="end">10</text>
+<line x1="240.3" y1="44" x2="240.3" y2="306" stroke="#2EA7E0" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="258.1" y1="44" x2="258.1" y2="306" stroke="#2EA7E0" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="311.6" y1="44" x2="311.6" y2="306" stroke="#2EA7E0" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="365.0" y1="44" x2="365.0" y2="306" stroke="#2EA7E0" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="614.4" y1="44" x2="614.4" y2="306" stroke="#2EA7E0" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="632.2" y1="44" x2="632.2" y2="306" stroke="#2EA7E0" stroke-width="1" stroke-dasharray="4 3"/>
+<path d="M80.0 61.7H97.8V61.7H115.6V61.7H133.4V61.7H151.2V61.7H169.1V61.7H186.9V61.7H204.7V61.7H222.5V61.7H240.3V79.3H258.1V97.0H275.9V97.0H293.8V97.0H311.6V114.7H329.4V114.7H347.2V114.7H365.0V132.3H382.8V132.3H400.6V132.3H418.4V132.3H436.2V132.3H454.1V132.3H471.9V132.3H489.7V132.3H507.5V132.3H525.3V132.3H543.1V132.3H560.9V132.3H578.8V132.3H596.6V132.3H614.4V114.7H632.2V97.0H650.0V97.0" fill="none" stroke="#0086CD" stroke-width="2"/>
+<polyline points="80.0,222.8 97.8,200.1 115.6,244.1 133.4,224.2 151.2,236.6 169.1,238.6 186.9,244.8 204.7,233.8 222.5,247.6 240.3,239.3 258.1,229.7 275.9,248.2 293.8,257.2 311.6,300.5 329.4,259.2 347.2,272.3 365.0,268.9 382.8,273.0 400.6,240.7 418.4,259.9 436.2,260.6 454.1,262.7 471.9,262.7 489.7,255.1 507.5,259.2 525.3,237.2 543.1,246.2 560.9,242.1 578.8,224.2 596.6,229.7 614.4,257.2" fill="none" stroke="#006199" stroke-width="2"/>
+<circle cx="80.0" cy="222.8" r="2" fill="#006199"/>
+<circle cx="97.8" cy="200.1" r="2" fill="#006199"/>
+<circle cx="115.6" cy="244.1" r="2" fill="#006199"/>
+<circle cx="133.4" cy="224.2" r="2" fill="#006199"/>
+<circle cx="151.2" cy="236.6" r="2" fill="#006199"/>
+<circle cx="169.1" cy="238.6" r="2" fill="#006199"/>
+<circle cx="186.9" cy="244.8" r="2" fill="#006199"/>
+<circle cx="204.7" cy="233.8" r="2" fill="#006199"/>
+<circle cx="222.5" cy="247.6" r="2" fill="#006199"/>
+<circle cx="240.3" cy="239.3" r="2" fill="#006199"/>
+<circle cx="258.1" cy="229.7" r="2" fill="#006199"/>
+<circle cx="275.9" cy="248.2" r="2" fill="#006199"/>
+<circle cx="293.8" cy="257.2" r="2" fill="#006199"/>
+<circle cx="311.6" cy="300.5" r="2" fill="#006199"/>
+<circle cx="329.4" cy="259.2" r="2" fill="#006199"/>
+<circle cx="347.2" cy="272.3" r="2" fill="#006199"/>
+<circle cx="365.0" cy="268.9" r="2" fill="#006199"/>
+<circle cx="382.8" cy="273.0" r="2" fill="#006199"/>
+<circle cx="400.6" cy="240.7" r="2" fill="#006199"/>
+<circle cx="418.4" cy="259.9" r="2" fill="#006199"/>
+<circle cx="436.2" cy="260.6" r="2" fill="#006199"/>
+<circle cx="454.1" cy="262.7" r="2" fill="#006199"/>
+<circle cx="471.9" cy="262.7" r="2" fill="#006199"/>
+<circle cx="489.7" cy="255.1" r="2" fill="#006199"/>
+<circle cx="507.5" cy="259.2" r="2" fill="#006199"/>
+<circle cx="525.3" cy="237.2" r="2" fill="#006199"/>
+<circle cx="543.1" cy="246.2" r="2" fill="#006199"/>
+<circle cx="560.9" cy="242.1" r="2" fill="#006199"/>
+<circle cx="578.8" cy="224.2" r="2" fill="#006199"/>
+<circle cx="596.6" cy="229.7" r="2" fill="#006199"/>
+<circle cx="614.4" cy="257.2" r="2" fill="#006199"/>
+<rect x="628.2" y="202" width="25.8" height="98" fill="none" stroke="#485A64" stroke-width="0.75" stroke-dasharray="2 2"/>
+<text x="656.0" y="236" font-size="10" fill="#485A64" text-anchor="end" transform="translate(0,0)"> </text>
+<text x="624.2" y="214" font-size="10" fill="#485A64" text-anchor="end">빈 칸 = 아직 발표 전</text>
+<text x="80.0" y="322" font-size="10" fill="#485A64" text-anchor="middle">2024-01</text>
+<text x="186.9" y="322" font-size="10" fill="#485A64" text-anchor="middle">2024-07</text>
+<text x="293.8" y="322" font-size="10" fill="#485A64" text-anchor="middle">2025-01</text>
+<text x="400.6" y="322" font-size="10" fill="#485A64" text-anchor="middle">2025-07</text>
+<text x="507.5" y="322" font-size="10" fill="#485A64" text-anchor="middle">2026-01</text>
+<text x="614.4" y="322" font-size="10" fill="#485A64" text-anchor="middle">2026-07</text>
+<line x1="480" y1="27" x2="500" y2="27" stroke="#2EA7E0" stroke-width="1" stroke-dasharray="4 3"/><text x="506" y="31" font-size="10" fill="#485A64">기준금리가 바뀐 달(6개)</text>
+<rect x="20" y="342" width="640" height="28" rx="4" fill="#006199"/><text x="340" y="361" text-anchor="middle" fill="#FFFFFF" font-size="13">같은 가로축(월)에 놓고 방향, 시차, 확인한 기간을 확인한다</text>
+</svg>

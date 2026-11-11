@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" role="img" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"><title>활동 1에서 만드는 것</title><desc>지표 파일을 읽는 코드를 AI에 요청해 받고, 실행해 최근 수치 표를 출력한 뒤 그 코드 파일을 활동 2의 입력으로 넘긴다.</desc><defs><marker id="i1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#2EA7E0" stroke-width="1.5"/></marker></defs><rect width="680" height="400" fill="#FFFFFF"/>
+<rect x="20" y="18" width="190" height="30" rx="15" fill="#485A64"/><text x="115" y="38" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="700">준비</text>
+<rect x="240" y="18" width="200" height="30" rx="15" fill="#006199"/><text x="340" y="38" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="700">1 코드 요청</text>
+<rect x="460" y="18" width="200" height="30" rx="15" fill="#0086CD"/><text x="560" y="38" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="700">2, 3 실행과 확인</text>
+<g fill="#F0F2F5" stroke="#485A64" stroke-width="0.75"><rect x="20" y="62" width="190" height="210" rx="8"/><rect x="240" y="62" width="200" height="210" rx="8"/><rect x="460" y="62" width="200" height="210" rx="8"/></g>
+<g font-size="14" font-weight="700" fill="#006199" text-anchor="middle"><text x="115" y="88">지표 파일</text><text x="340" y="88">코드 파일(.py)</text><text x="560" y="88">최근 수치 표</text></g>
+<rect x="34" y="100" width="162" height="96" fill="#FFFFFF" stroke="#485A64" stroke-width="0.5"/><rect x="34" y="100" width="162" height="18" fill="#E8F5FC" stroke="#485A64" stroke-width="0.5"/>
+<g font-size="10" fill="#485A64"><text x="40" y="113" font-weight="700" fill="#006199">연월 | 기준금리 | 물가 | …</text><text x="40" y="137">2024-01 | 3.50 | 2.8 | …</text><text x="40" y="155">2024-02 | 3.50 | 3.1 | …</text><text x="40" y="171">⋮</text><text x="40" y="188">2026-09 | 3.00 | 2.9 | …</text></g>
+<g font-size="12" fill="#485A64" text-anchor="middle"><text x="115" y="230">한 행 = 한 달, 33행</text><text x="115" y="250">다섯 지표</text><text x="115" y="266" font-size="11">2024-01 ~ 2026-09</text></g>
+<rect x="254" y="100" width="172" height="96" fill="#FFFFFF" stroke="#0086CD" stroke-width="1"/>
+<g font-size="10.5" fill="#006199" font-family="Consolas,'Malgun Gothic',monospace"><text x="262" y="122"># 파일 이름을 입력받는다</text><text x="262" y="142"># 행 수와 기간을 출력한다</text><text x="262" y="162"># 지표마다 최신 값을 찾는다</text><text x="262" y="182"># 표로 출력한다</text></g>
+<g font-size="12" fill="#485A64" text-anchor="middle"><text x="340" y="230">Gemini가 작성</text><text x="340" y="250">모든 줄에 한국어 주석</text><text x="340" y="266" font-size="11">표준 라이브러리만 사용</text></g>
+<rect x="474" y="100" width="172" height="98" fill="#FFFFFF" stroke="#485A64" stroke-width="0.5"/><rect x="474" y="100" width="172" height="18" fill="#E8F5FC" stroke="#485A64" stroke-width="0.5"/>
+<g font-size="10.5" fill="#485A64"><text x="480" y="113" font-weight="700" fill="#006199">지표</text><text x="544" y="113" font-weight="700" fill="#006199">최신 월</text><text x="640" y="113" font-weight="700" fill="#006199" text-anchor="end">값</text>
+<text x="480" y="133">기준금리</text><text x="544" y="133">2026-09</text><text x="640" y="133" text-anchor="end">3.00</text>
+<text x="480" y="149">소비자물가</text><text x="544" y="149">2026-09</text><text x="640" y="149" text-anchor="end">2.9</text>
+<text x="480" y="165">환율</text><text x="544" y="165">2026-09</text><text x="640" y="165" text-anchor="end">1,359.00</text>
+<text x="480" y="181">실업률</text><text x="544" y="181">2026-09</text><text x="640" y="181" text-anchor="end">2.0</text>
+<text x="480" y="195" fill="#0086CD" font-weight="700">편의점</text><text x="544" y="195" fill="#0086CD" font-weight="700">2026-07</text><text x="640" y="195" text-anchor="end" fill="#0086CD" font-weight="700">1.1</text></g>
+<g font-size="12" fill="#485A64" text-anchor="middle"><text x="560" y="230">읽은 행 수 33</text><text x="560" y="250">지표마다 최신 월이 다름</text><text x="560" y="266" font-size="11">값 1개를 파일과 대조</text></g>
+<g fill="none" stroke="#2EA7E0" stroke-width="1.5" marker-end="url(#i1)"><line x1="210" y1="148" x2="238" y2="148"/><line x1="440" y1="148" x2="458" y2="148"/><line x1="340" y1="272" x2="340" y2="298"/></g>
+<rect x="20" y="300" width="640" height="46" rx="8" fill="#E8F5FC" stroke="#0086CD" stroke-width="1"/><text x="340" y="319" text-anchor="middle" font-size="13" font-weight="700" fill="#006199">활동 2의 입력</text><text x="340" y="337" text-anchor="middle" font-size="12" fill="#485A64">동작하는 코드 파일 — 같은 대화에서 차트 기능을 추가한다</text>
+<rect x="20" y="358" width="640" height="30" rx="4" fill="#006199"/><text x="340" y="378" text-anchor="middle" fill="#FFFFFF" font-size="13">같은 표를 매달 다시 만들지 않고, 도구로 만든다</text></svg>
