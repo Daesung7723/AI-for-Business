@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>다섯 가지 지표의 파급 효과</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #FFFFFF; }
+  body { display: flex; align-items: center; justify-content: center; }
+  svg { width: 100vw; height: 100vh; max-width: calc(100vh * 16 / 9); display: block; }
+  text { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+  .btn { cursor: pointer; }
+  .btn rect { fill: #FFFFFF; stroke: #1F2A44; stroke-width: 1.5; }
+  .btn:hover rect { fill: #EEF1F5; }
+  .btn.on rect { fill: #EEF1F5; stroke: #1F2A44; stroke-width: 3; }
+  .edge path.line { fill: none; stroke: #1F2A44; stroke-width: 3; }
+  .edge.up path.line { stroke: #1F5FBF; stroke-width: 4.5; }
+  .edge.down path.line { stroke: #C0392B; stroke-width: 4.5; }
+  .edge .lag { fill: #44506A; }
+  .edge.up .lag, .edge.up .rel { fill: #1F5FBF; font-weight: 700; }
+  .edge.down .lag, .edge.down .rel { fill: #C0392B; font-weight: 700; }
+  .box rect.frame { fill: #F4F7FB; stroke: #1F2A44; stroke-width: 2; }
+  .box.origin rect.frame { stroke: #1F2A44; stroke-width: 4; fill: #EEF1F5; }
+  .box.up rect.frame { stroke: #1F5FBF; stroke-width: 3; }
+  .box.down rect.frame { stroke: #C0392B; stroke-width: 3; }
+  .badge { opacity: 0; transition: opacity 0.3s ease-out; }
+  .badge.show { opacity: 1; }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 1280 720" role="img" aria-labelledby="t d">
+  <title id="t">다섯 가지 지표의 파급 효과</title>
+  <desc id="d">지표 하나의 상승 또는 하강을 누르면 영향이 화살표를 따라 다른 지표로 이어지는 방향을 차례로 표시한다. 상승으로 이어지는 화살표는 파랑, 하강으로 이어지는 화살표는 붉은색이다.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9z" fill="#1F2A44"/></marker>
+    <marker id="ahUp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L9 5L1 9z" fill="#1F5FBF"/></marker>
+    <marker id="ahDown" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L9 5L1 9z" fill="#C0392B"/></marker>
+  </defs>
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+
+  <!-- 머리 -->
+  <text x="60" y="62" font-size="34" font-weight="700" fill="#111111">다섯 가지 지표의 파급 효과</text>
+  <text x="60" y="100" font-size="20" fill="#44506A">지표의 ▲ 상승 또는 ▼ 하강을 누르면, 영향이 화살표를 따라 다른 지표로 이어집니다</text>
+  <g class="btn" id="reset" transform="translate(1080,58)"><rect x="0" y="0" width="140" height="44" rx="8"/><text x="70" y="29" font-size="20" text-anchor="middle" fill="#1F2A44">처음으로</text></g>
+
+  <!-- 구역 -->
+  <rect x="60" y="124" width="1160" height="476" rx="20" fill="#DCEBFF" fill-opacity="0.45" stroke="#7A8BA6" stroke-width="1.5"/>
+
+  <!-- 화살표 (관계와 시차) -->
+  <g id="edges"></g>
+  <!-- 지표 상자 -->
+  <g id="boxes"></g>
+
+  <!-- 하단 -->
+  <text id="chain" x="60" y="642" font-size="20" font-weight="700" fill="#1F2A44"></text>
+  <text x="60" y="686" font-size="20" fill="#44506A">방향은 일반적인 경향입니다. 영향의 크기와 시차는 경로마다 다르고, 같은 시기의 다른 요인도 함께 작용합니다.</text>
+</svg>
+<script>
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var STEP_MS = 1800;
+
+  // 지표 상자 — 위치는 10주 2.2 마인드맵 배치를 따른다
+  var nodes = {
+    rate: { name: '기준금리',       x: 110, y: 160, w: 310, h: 124 },
+    fx:   { name: '환율',           x: 860, y: 160, w: 310, h: 124 },
+    cpi:  { name: '소비자물가지수', x: 460, y: 310, w: 390, h: 124 },
+    gdp:  { name: '국내총생산',     x: 110, y: 450, w: 310, h: 124 },
+    emp:  { name: '고용 지표',      x: 760, y: 450, w: 310, h: 124 }
+  };
+
+  // 화살표 — 관계는 노트 4.1, 4.2와 2.2 그림의 화살표 5개. sign: 같은 방향 +1, 반대 방향 -1
+  var edges = [
+    { id: 'rate_fx',  from: 'rate', to: 'fx',  sign: -1, rel: '금리 차와 자금 이동', lag: '',
+      d: 'M420 200 L860 200', rx: 640, ry: 186, lx: 640, ly: 228 },
+    { id: 'fx_cpi',   from: 'fx',   to: 'cpi', sign: +1, rel: '수입 물가', lag: '',
+      d: 'M1015 284 C1015 330 950 372 850 372', rx: 1040, ry: 334, lx: 1040, ly: 362, anchor: 'start' },
+    { id: 'cpi_rate', from: 'cpi',  to: 'rate', sign: +1, rel: '물가 억제', lag: '시차: 다음 결정 때',
+      d: 'M540 310 C520 290 460 272 420 262', rx: 452, ry: 306, lx: 452, ly: 334, anchor: 'end' },
+    { id: 'rate_gdp', from: 'rate', to: 'gdp', sign: -1, rel: '소비, 투자', lag: '시차: 2~3분기',
+      d: 'M200 284 L200 450', rx: 216, ry: 360, lx: 216, ly: 388, anchor: 'start' },
+    { id: 'gdp_emp',  from: 'gdp',  to: 'emp', sign: +1, rel: '생산과 채용', lag: '시차: 고용이 뒤따름',
+      d: 'M420 512 L760 512', rx: 590, ry: 498, lx: 590, ly: 540 }
+  ];
+
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  var gEdges = document.getElementById('edges');
+  edges.forEach(function (e) {
+    var g = el('g', { 'class': 'edge', id: 'e_' + e.id });
+    g.appendChild(el('path', { 'class': 'line', d: e.d, 'marker-end': 'url(#ah)' }));
+    var a = e.anchor || 'middle';
+    g.appendChild(el('text', { 'class': 'rel', x: e.rx, y: e.ry, 'font-size': 20, fill: '#1F2A44', 'text-anchor': a }, e.rel));
+    g.appendChild(el('text', { 'class': 'lag', x: e.lx, y: e.ly, 'font-size': 20, 'text-anchor': a }, e.lag));
+    gEdges.appendChild(g);
+  });
+
+  var gBoxes = document.getElementById('boxes');
+  Object.keys(nodes).forEach(function (key) {
+    var n = nodes[key];
+    var g = el('g', { 'class': 'box', id: 'b_' + key, transform: 'translate(' + n.x + ',' + n.y + ')' });
+    g.appendChild(el('rect', { 'class': 'frame', x: 0, y: 0, width: n.w, height: n.h, rx: 10 }));
+    g.appendChild(el('text', { x: 18, y: 40, 'font-size': 26, 'font-weight': 700, fill: '#1F2A44' }, n.name));
+    var badge = el('g', { 'class': 'badge', id: 'g_' + key });
+    badge.appendChild(el('rect', { id: 'r_' + key, x: n.w - 146, y: 14, width: 132, height: 36, rx: 18, fill: '#FFFFFF', stroke: '#C0392B', 'stroke-width': 2 }));
+    badge.appendChild(el('text', { id: 't_' + key, x: n.w - 80, y: 39, 'font-size': 20, 'font-weight': 700, 'text-anchor': 'middle', fill: '#C0392B' }, ''));
+    g.appendChild(badge);
+    [{ dir: +1, label: '▲ 상승', x: 18 }, { dir: -1, label: '▼ 하강', x: 146 }].forEach(function (b) {
+      var bt = el('g', { 'class': 'btn', id: 'k_' + key + (b.dir > 0 ? '_up' : '_down'), transform: 'translate(' + b.x + ',66)' });
+      bt.appendChild(el('rect', { x: 0, y: 0, width: 116, height: 42, rx: 8 }));
+      bt.appendChild(el('text', { x: 58, y: 28, 'font-size': 20, 'text-anchor': 'middle', fill: '#1F2A44' }, b.label));
+      bt.addEventListener('click', function () { run(key, b.dir, false); });
+      g.appendChild(bt);
+    });
+    gBoxes.appendChild(g);
+  });
+
+  var timers = [];
+  function clearAll() {
+    timers.forEach(clearTimeout); timers = [];
+    document.querySelectorAll('.edge').forEach(function (g) { g.classList.remove('up', 'down'); g.querySelector('path').setAttribute('marker-end', 'url(#ah)'); });
+    document.querySelectorAll('.box').forEach(function (g) { g.classList.remove('origin', 'up', 'down'); });
+    document.querySelectorAll('.badge').forEach(function (g) { g.classList.remove('show'); });
+    document.querySelectorAll('.btn').forEach(function (g) { g.classList.remove('on'); });
+    document.getElementById('chain').textContent = '';
+  }
+  document.getElementById('reset').addEventListener('click', clearAll);
+
+  function arrow(dir) { return dir > 0 ? '▲' : '▼'; }
+  function word(dir) { return dir > 0 ? '상승' : '하강'; }
+
+  // 출발 지표에서 화살표를 따라 단계별로 방향을 계산한다. 이미 표시한 지표는 다시 지나지 않는다.
+  function plan(origin, dir) {
+    var steps = [], seen = {}, front = [{ node: origin, dir: dir }];
+    seen[origin] = true;
+    while (front.length) {
+      var next = [], step = [];
+      front.forEach(function (f) {
+        edges.forEach(function (e) {
+          if (e.from !== f.node) return;
+          var d = f.dir * e.sign;
+          if (e.to === origin) { step.push({ edge: e, node: e.to, dir: d, feedback: true }); return; }
+          if (seen[e.to]) return;
+          seen[e.to] = true;
+          step.push({ edge: e, node: e.to, dir: d });
+          next.push({ node: e.to, dir: d });
+        });
+      });
+      if (step.length) steps.push(step);
+      front = next;
+    }
+    return steps;
+  }
+
+  function run(origin, dir, instant) {
+    clearAll();
+    document.getElementById('b_' + origin).classList.add('origin');
+    document.getElementById('k_' + origin + (dir > 0 ? '_up' : '_down')).classList.add('on');
+    var steps = plan(origin, dir);
+    var chain = [nodes[origin].name + ' ' + arrow(dir)];
+    var marks = ['①', '②', '③', '④'];
+    if (!steps.length) {
+      document.getElementById('chain').textContent = nodes[origin].name + ' ' + arrow(dir) + ' — 이 그림에서는 다른 지표로 이어지는 화살표가 없습니다(고용은 결과 쪽에서 뒤따르는 지표)';
+      return;
+    }
+    steps.forEach(function (step, i) {
+      var t = instant ? 0 : (i + 1) * STEP_MS;
+      timers.push(setTimeout(function () {
+        var part = [];
+        step.forEach(function (s) {
+          var g = document.getElementById('e_' + s.edge.id);
+          var cls = s.dir > 0 ? 'up' : 'down';
+          var col = s.dir > 0 ? '#1F5FBF' : '#C0392B';
+          g.classList.add(cls);
+          g.querySelector('path').setAttribute('marker-end', s.dir > 0 ? 'url(#ahUp)' : 'url(#ahDown)');
+          var box = document.getElementById('b_' + s.node);
+          if (!s.feedback) box.classList.add(cls);
+          document.getElementById('r_' + s.node).setAttribute('stroke', col);
+          document.getElementById('t_' + s.node).setAttribute('fill', col);
+          document.getElementById('t_' + s.node).textContent = (s.feedback ? '↺ ' : '') + arrow(s.dir) + ' ' + word(s.dir);
+          document.getElementById('g_' + s.node).classList.add('show');
+          part.push(nodes[s.node].name + ' ' + arrow(s.dir) + (s.feedback ? '(되돌아옴)' : ''));
+        });
+        chain.push(marks[i] + ' ' + part.join(', '));
+        document.getElementById('chain').textContent = chain.join('  →  ');
+      }, t));
+    });
+  }
+
+  // 확인용: 주소 끝에 #rate_up 처럼 붙이면 해당 버튼을 즉시 실행한다
+  var h = location.hash.replace('#', '').split('_');
+  if (h.length === 2 && nodes[h[0]]) run(h[0], h[1] === 'up' ? 1 : -1, true);
+})();
+</script>
+</body>
+</html>
