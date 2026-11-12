@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="440" viewBox="0 0 680 440">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9 Z" fill="#0086CD"/>
+    </marker>
+    <style>
+      text { font-family:'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif; }
+      .reference { fill:#485A64; font-size:11px; font-weight:400; }
+      .reference-line { fill:none; stroke:#55C3F1; stroke-width:1; }
+      .interaction { fill:none; stroke:#0086CD; stroke-width:2; marker-end:url(#arrow); }
+      .relation { fill:#006199; font-size:11px; font-weight:400; }
+      .node { fill:#FFFFFF; stroke:#2EA7E0; stroke-width:1.3; }
+      .name { fill:#006199; font-size:14px; font-weight:700; text-anchor:middle; }
+      .meaning { fill:#485A64; font-size:11px; font-weight:400; text-anchor:middle; }
+    </style>
+  </defs>
+  <rect width="680" height="440" fill="#FFFFFF"/>
+  <rect x="60" y="60" width="530" height="330" rx="18" fill="#E8F5FC" stroke="#2EA7E0" stroke-width="1.3"/>
+  <text x="340" y="82" text-anchor="middle" fill="#006199" font-size="12" font-weight="700">다섯 가지 지표</text>
+
+  <!-- Each outer reference connects directly to its own inner indicator. -->
+  <g class="reference-line">
+    <path data-from="국고채금리" data-to="기준금리" d="M 135 39 L 135 100"/>
+    <path data-from="가계부채" data-to="기준금리" d="M 240 39 L 240 100"/>
+    <path data-from="경상수지" data-to="환율" d="M 450 39 L 450 100"/>
+    <path data-from="외국인 주식자금" data-to="환율" d="M 545 39 L 545 100"/>
+    <path data-from="근원물가" data-to="소비자물가지수" d="M 600 239 L 507 239"/>
+    <path data-from="생산자물가지수" data-to="소비자물가지수" d="M 600 267 L 507 267"/>
+    <path data-from="민간소비" data-to="국내총생산" d="M 135 413 L 135 375"/>
+    <path data-from="설비투자" data-to="국내총생산" d="M 240 413 L 240 375"/>
+    <path data-from="실업률" data-to="고용 지표" d="M 405 413 L 405 375"/>
+    <path data-from="고용률" data-to="고용 지표" d="M 525 413 L 525 375"/>
+  </g>
+  <g class="reference" text-anchor="middle">
+    <text x="135" y="31">국고채금리</text>
+    <text x="240" y="31">가계부채</text>
+    <text x="450" y="31">경상수지</text>
+    <text x="545" y="31">외국인 주식자금</text>
+    <text x="135" y="429">민간소비</text>
+    <text x="240" y="429">설비투자</text>
+    <text x="405" y="429">실업률</text>
+    <text x="525" y="429">고용률</text>
+  </g>
+  <g class="reference">
+    <text x="600" y="232">근원물가</text>
+    <text x="600" y="260">생산자물가지수</text>
+  </g>
+
+  <!-- Five directed interactions, including the closed three-indicator loop. -->
+  <g class="interaction">
+    <path data-from="기준금리" data-to="국내총생산" d="M 140 168 L 140 307"/>
+    <path data-from="국내총생산" data-to="고용 지표" d="M 286 346 L 360 346"/>
+    <path data-from="기준금리" data-to="환율" d="M 286 133 L 414 133"/>
+    <path data-from="환율" data-to="소비자물가지수" d="M 489 168 L 489 198 Q 489 209 478 220"/>
+    <path data-from="소비자물가지수" data-to="기준금리" d="M 300 220 Q 272 197 250 168"/>
+  </g>
+  <g class="relation">
+    <text x="153" y="242">소비, 투자</text>
+    <text x="323" y="334" text-anchor="middle">생산과 채용</text>
+    <text x="350" y="121" text-anchor="middle">금리 차와 자금 이동</text>
+    <text x="500" y="197">수입 물가</text>
+    <text x="246" y="202" text-anchor="middle">물가 억제</text>
+  </g>
+
+  <g data-indicator="기준금리">
+    <rect class="node" x="86" y="100" width="200" height="68" rx="10"/>
+    <text class="name" x="186" y="123">기준금리</text>
+    <text class="meaning" x="186" y="143"><tspan x="186">돈을 빌리는 값,</tspan><tspan x="186" dy="15"> 통화정책의 방향</tspan></text>
+  </g>
+  <g data-indicator="환율">
+    <rect class="node" x="414" y="100" width="150" height="68" rx="10"/>
+    <text class="name" x="489" y="123">환율</text>
+    <text class="meaning" x="489" y="147">원화와 외화의 교환 비율</text>
+  </g>
+  <g data-indicator="소비자물가지수">
+    <rect class="node" x="257" y="220" width="250" height="65" rx="10"/>
+    <text class="name" x="382" y="242">소비자물가지수</text>
+    <text class="meaning" x="382" y="260"><tspan x="382">가계가 구매하는 상품과</tspan><tspan x="382" dy="15"> 서비스 가격의 평균 변동</tspan></text>
+  </g>
+  <g data-indicator="국내총생산">
+    <rect class="node" x="86" y="307" width="200" height="68" rx="10"/>
+    <text class="name" x="186" y="330">국내총생산</text>
+    <text class="meaning" x="186" y="350"><tspan x="186">국내에서 생산된</tspan><tspan x="186" dy="15"> 부가가치의 총합</tspan></text>
+  </g>
+  <g data-indicator="고용 지표">
+    <rect class="node" x="360" y="307" width="204" height="68" rx="10"/>
+    <text class="name" x="462" y="330">고용 지표</text>
+    <text class="meaning" x="462" y="350"><tspan x="462">일하는 사람과</tspan><tspan x="462" dy="15"> 일자리를 찾는 사람의 규모</tspan></text>
+  </g>
+</svg>
