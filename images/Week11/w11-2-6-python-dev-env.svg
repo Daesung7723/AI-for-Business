@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 478" role="img" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"><title>Python 개발환경의 구조 — IDLE과 Python 실행기</title><desc>IDLE은 Python에 포함된 개발환경으로, 코드를 작성해 week11_sales.py로 저장하는 편집기 창과 한 줄 명령을 즉시 실행하는 Shell 창이 있다. Python 실행기는 IDLE 화면과 별도 프로세스에서 편집기의 파일(F5)과 Shell의 한 줄 명령을 실행하고, 출력, 입력, 오류를 Shell 창과 주고받는다. 실행기는 명령을 CPU에서 실행하고, 파일과 화면에 관한 일은 운영체제(Windows)에 요청한다.</desc><defs><marker id="p1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#2EA7E0" stroke-width="1.5"/></marker><marker id="p2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#485A64" stroke-width="1.5"/></marker></defs><rect width="680" height="478" fill="#FFFFFF"/>
+<rect x="63" y="8" width="200" height="36" rx="8" fill="#F0F2F5" stroke="#485A64" stroke-width="0.75"/><text x="163" y="23" text-anchor="middle" font-size="13" font-weight="700" fill="#006199">사용자</text><text x="163" y="38" text-anchor="middle" font-size="11" fill="#485A64">코드 입력, 결과 확인</text>
+<line x1="163" y1="45" x2="163" y2="57" stroke="#485A64" stroke-width="1.2" marker-start="url(#p2)" marker-end="url(#p2)"/>
+<rect x="20" y="69" width="286" height="233" rx="10" fill="none" stroke="#485A64" stroke-width="0.75" stroke-dasharray="4 3"/>
+<rect x="36" y="58" width="230" height="22" rx="11" fill="#006199"/><text x="151" y="73" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">IDLE — Python에 포함된 개발환경</text>
+<g fill="#F0F2F5" stroke="#485A64" stroke-width="0.75"><rect x="36" y="90" width="254" height="126" rx="8"/><rect x="36" y="228" width="254" height="62" rx="8"/></g>
+<g font-size="13" font-weight="700" fill="#006199"><text x="50" y="110">Shell 창</text><text x="50" y="248">편집기(Editor) 창</text></g>
+<g font-size="11" fill="#485A64"><text x="50" y="127"><tspan font-family="Consolas,'Malgun Gothic',monospace">&gt;&gt;&gt;</tspan> 뒤 한 줄 명령을 즉시 실행</text><text x="50" y="142">출력, 입력, 오류가 나타나는 곳</text><text x="50" y="265">코드 작성, 저장(<tspan font-family="Consolas,'Malgun Gothic',monospace">.py</tspan> 파일)</text><text x="50" y="280">Run Module(F5)로 실행</text></g>
+<rect x="48" y="150" width="230" height="58" rx="3" fill="#FFFFFF" stroke="#485A64" stroke-width="0.5"/>
+<g font-size="11" fill="#485A64" font-family="Consolas,'Malgun Gothic',monospace"><text x="56" y="164">== RESTART: …\week11_sales.py ==</text><text x="56" y="177" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">읽은 행 수: 14</text><text x="56" y="190">…</text><text x="56" y="203">&gt;&gt;&gt;</text></g>
+<rect x="440" y="69" width="220" height="233" rx="8" fill="#E8F5FC" stroke="#0086CD" stroke-width="1"/>
+<rect x="440" y="58" width="220" height="22" rx="11" fill="#0086CD"/><text x="550" y="73" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">실행 프로세스 — IDLE 화면과 별도</text>
+<text x="550" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#006199">Python 실행기</text>
+<g font-size="11" fill="#485A64" text-anchor="middle"><text x="550" y="147">(인터프리터, Python 엔진)</text></g>
+<text x="550" y="170" text-anchor="middle" font-size="12" fill="#485A64">코드를 해석해 실행</text>
+<rect x="456" y="190" width="188" height="70" rx="6" fill="#FFFFFF" stroke="#0086CD" stroke-width="0.75"/>
+<text x="550" y="211" text-anchor="middle" font-size="12" font-weight="700" fill="#006199">표준 라이브러리</text>
+<g font-size="11" fill="#485A64" text-anchor="middle"><text x="550" y="228">Python에 포함된 모듈 모음</text><text x="550" y="245"><tspan font-family="Consolas,'Malgun Gothic',monospace">import csv</tspan>로 불러와 사용</text></g>
+<g fill="none" stroke="#2EA7E0" stroke-width="1.5" marker-end="url(#p1)"><path d="M290 122H438"/><path d="M440 154H292"/><path d="M290 186H438"/><path d="M290 259H438"/></g>
+<g font-size="11" font-weight="700" fill="#006199" text-anchor="middle"><text x="373" y="116">③ 한 줄 실행</text><text x="373" y="148">④ 출력(print), 오류</text><text x="373" y="180">④ 입력(input)</text><text x="373" y="253">② F5 실행</text></g>
+<g font-size="11" fill="#485A64" text-anchor="middle"><text x="373" y="275">Shell을 다시 시작한 뒤</text><text x="373" y="289">저장한 파일을 실행</text></g>
+<rect x="20" y="322" width="640" height="26" rx="6" fill="#F0F2F5" stroke="#485A64" stroke-width="0.75"/><text x="400" y="339" text-anchor="middle" font-size="11" fill="#485A64"><tspan font-size="12" font-weight="700" fill="#006199">운영체제(Windows)</tspan> — 파일 읽기와 저장, 화면 표시를 처리</text>
+<rect x="20" y="366" width="640" height="66" rx="8" fill="#FFFFFF" stroke="#485A64" stroke-width="0.75"/>
+<rect x="36" y="356" width="80" height="20" rx="10" fill="#485A64"/><text x="76" y="370" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">하드웨어</text>
+<g fill="#F0F2F5" stroke="#485A64" stroke-width="0.75"><rect x="36" y="380" width="238" height="44" rx="6"/><rect x="290" y="380" width="160" height="44" rx="6"/><rect x="466" y="380" width="178" height="44" rx="6"/></g>
+<text x="50" y="398" font-size="13" font-weight="700" fill="#006199">저장장치 <tspan font-size="11" font-weight="400" fill="#485A64" font-family="Consolas,'Malgun Gothic',monospace">week11_sales.py</tspan></text>
+<g font-size="13" font-weight="700" fill="#006199" text-anchor="middle"><text x="370" y="398">메모리</text><text x="555" y="398">CPU</text></g>
+<g font-size="11" fill="#485A64"><text x="50" y="415">편집기에서 저장한 코드 파일</text><text x="370" y="415" text-anchor="middle">실행 중인 프로그램과 데이터</text><text x="555" y="415" text-anchor="middle">실행기의 명령을 실행(계산)</text></g>
+<path d="M160 290V380" fill="none" stroke="#2EA7E0" stroke-width="1.5" marker-end="url(#p1)"/><text x="168" y="315" font-size="11" font-weight="700" fill="#006199">① 저장</text>
+<rect x="20" y="442" width="640" height="28" rx="4" fill="#006199"/><g font-size="12" fill="#FFFFFF" text-anchor="middle"><text x="180" y="461">IDLE = 코드를 작성하고 결과를 확인하는 곳</text><text x="500" y="461">Python 실행기 = 코드를 해석해 실행하는 곳</text></g><line x1="340" y1="449" x2="340" y2="463" stroke="#FFFFFF" stroke-width="1"/></svg>
