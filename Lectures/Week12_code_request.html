@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>코드가 보내는 요청 한 번</title>
+<style>
+html,body{margin:0;height:100%;background:#fff;overflow:hidden;cursor:pointer;
+  font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage svg{width:100vw;height:100vh}
+#wait{position:fixed;right:22px;bottom:22px;padding:6px 14px;border-radius:16px;background:#1F2A44;color:#fff;
+  font-size:15px;font-weight:bold;opacity:0;transition:opacity .2s}
+#wait.on{opacity:.85;animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+#hint{position:fixed;left:22px;bottom:22px;font-size:13px;color:#8A94A6;transition:opacity 1s}
+#cover{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+  background:#FFFFFF;z-index:5}
+#cover.on{display:flex}
+#cover .t{font-size:34px;font-weight:bold;color:#111111}
+#cover .s{font-size:20px;color:#44506A}
+#cover .b{padding:10px 26px;border-radius:24px;background:#1F2A44;color:#FFFFFF;font-size:24px;font-weight:bold}
+</style></head><body>
+<div id="cover"><div class="t">코드가 보내는 요청 한 번</div><div class="s">12주 2.7 — 6주 코드의 여섯 줄과 요청 과정</div><div class="b">▶ 클릭하면 시작</div></div>
+<div id="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A44"/></marker><marker id="arwT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4A7D7C"/></marker></defs>
+<rect width="1280" height="720" fill="#FFFFFF"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.00000;0.00298;0.14215;0.14513;1" dur="100.6s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 코드의 요청</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">코드 여섯 줄의 네 부분</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">위에서 아래로 실행 — 주소 작성, 요청, 변환, 확인</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">1 / 10</text>
+<rect x="60" y="196" width="680" height="380" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="232.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6주 코드의 요청 부분(주소는 일부 생략)</text>
+<text x="78.0" y="270.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">1</text>
+<text x="102.0" y="270" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="627.0" lengthAdjust="spacingAndGlyphs">url = (f&quot;https://ecos.bok.or.kr/api/…/{API_KEY}/json/kr/&quot;</text>
+<text x="78.0" y="318.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">2</text>
+<text x="179.0" y="318" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="440.0" lengthAdjust="spacingAndGlyphs">f&quot;{first}/{last}/{STAT_CODE}/{CYCLE}/…&quot;)</text>
+<text x="78.0" y="366.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">3</text>
+<text x="102.0" y="366" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="583.0" lengthAdjust="spacingAndGlyphs">with urllib.request.urlopen(url, timeout=30) as resp:</text>
+<text x="78.0" y="414.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">4</text>
+<text x="146.0" y="414" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="506.0" lengthAdjust="spacingAndGlyphs">data = json.loads(resp.read().decode(&quot;utf-8&quot;))</text>
+<text x="78.0" y="462.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">5</text>
+<text x="102.0" y="462" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="363.0" lengthAdjust="spacingAndGlyphs">if &quot;StatisticSearch&quot; not in data:</text>
+<text x="78.0" y="510.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6</text>
+<text x="146.0" y="510" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="341.0" lengthAdjust="spacingAndGlyphs">result = data.get(&quot;RESULT&quot;, {})</text>
+<rect x="770" y="196" width="450" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<rect x="790" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="875.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">실행 컴퓨터</text>
+<rect x="1030" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="1115.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">ECOS 서버</text>
+<path d="M960,240 L1030,240" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<rect x="70" y="239" width="660" height="92" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.00596;0.00845;0.02535;0.02783;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="781" y="293" width="428" height="48" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.00696;0.00944;0.02535;0.02783;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="792.0" y="326.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">1~2줄</text>
+<text x="892.0" y="326.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">조건을 넣어 주소를 작성</text>
+<rect x="70" y="335" width="660" height="44" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.03181;0.03429;0.05119;0.05368;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="781" y="353" width="428" height="48" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.03280;0.03529;0.05119;0.05368;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="792.0" y="386.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">3줄</text>
+<text x="892.0" y="386.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">요청을 보내고 응답을 받음</text>
+<rect x="70" y="383" width="660" height="44" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05765;0.06014;0.07704;0.07952;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="781" y="413" width="428" height="48" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05865;0.06113;0.07704;0.07952;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="792.0" y="446.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">4줄</text>
+<text x="892.0" y="446.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">본문(JSON)을 자료로 변환</text>
+<rect x="70" y="431" width="660" height="92" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.08350;0.08598;0.10288;0.10537;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="781" y="473" width="428" height="48" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.08449;0.08698;0.10288;0.10537;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="792.0" y="506.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">5~6줄</text>
+<text x="892.0" y="506.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">정상 응답인지 확인</text>
+<rect x="48" y="618" width="467" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.11034;0.11282;0.13668;0.13917;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">주소 작성 → 요청 → 변환 → 확인<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.11034;0.11282;1" dur="100.6s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.14513;0.14811;0.23360;0.23658;1" dur="100.6s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 코드의 요청</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">① 조건 값으로 주소 작성</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">변수의 값이 주소의 정해진 자리에 대입</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">2 / 10</text>
+<rect x="60" y="196" width="680" height="380" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="232.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6주 코드의 요청 부분(주소는 일부 생략)</text>
+<text x="78.0" y="270.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">1</text>
+<text x="102.0" y="270" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="627.0" lengthAdjust="spacingAndGlyphs">url = (f&quot;https://ecos.bok.or.kr/api/…/{API_KEY}/json/kr/&quot;</text>
+<text x="78.0" y="318.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">2</text>
+<text x="179.0" y="318" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="440.0" lengthAdjust="spacingAndGlyphs">f&quot;{first}/{last}/{STAT_CODE}/{CYCLE}/…&quot;)</text>
+<text x="78.0" y="366.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">3</text>
+<text x="102.0" y="366" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="583.0" lengthAdjust="spacingAndGlyphs">with urllib.request.urlopen(url, timeout=30) as resp:</text>
+<text x="78.0" y="414.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">4</text>
+<text x="146.0" y="414" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="506.0" lengthAdjust="spacingAndGlyphs">data = json.loads(resp.read().decode(&quot;utf-8&quot;))</text>
+<text x="78.0" y="462.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">5</text>
+<text x="102.0" y="462" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="363.0" lengthAdjust="spacingAndGlyphs">if &quot;StatisticSearch&quot; not in data:</text>
+<text x="78.0" y="510.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6</text>
+<text x="146.0" y="510" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="341.0" lengthAdjust="spacingAndGlyphs">result = data.get(&quot;RESULT&quot;, {})</text>
+<rect x="70" y="239" width="660" height="92" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.15010;0.15258;0.23410;0.23658;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="770" y="196" width="450" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<rect x="790" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="875.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">실행 컴퓨터</text>
+<rect x="1030" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="1115.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">ECOS 서버</text>
+<path d="M960,240 L1030,240" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<g opacity="0"><text x="790.0" y="320.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">API_KEY = sample</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.15706;0.15954;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="358.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">first = 1, last = 10</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.16203;0.16451;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="396.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">STAT_CODE = 722Y001, CYCLE = Q</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.16700;0.16948;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="434.0" font-size="20" font-weight="bold" text-anchor="start" fill="#111111">완성된 주소</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.17197;0.17445;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="472" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" font-weight="normal" fill="#1F2A44" textLength="363.0" lengthAdjust="spacingAndGlyphs">…/StatisticSearch/sample/json/kr/</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.17694;0.17942;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="510" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" font-weight="normal" fill="#1F2A44" textLength="396.0" lengthAdjust="spacingAndGlyphs">1/10/722Y001/Q/2023Q4/2026Q3/0101000</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.18191;0.18439;1" dur="100.6s" repeatCount="indefinite"/></g>
+<rect x="48" y="618" width="405" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20179;0.20427;0.22813;0.23062;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">변수의 값으로 주소가 완성됨<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.20179;0.20427;1" dur="100.6s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23658;0.23956;0.32505;0.32803;1" dur="100.6s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 코드의 요청</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">② 요청과 시간 제한</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">urlopen이 주소로 요청을 전송</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">3 / 10</text>
+<rect x="60" y="196" width="680" height="380" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="232.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6주 코드의 요청 부분(주소는 일부 생략)</text>
+<text x="78.0" y="270.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">1</text>
+<text x="102.0" y="270" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="627.0" lengthAdjust="spacingAndGlyphs">url = (f&quot;https://ecos.bok.or.kr/api/…/{API_KEY}/json/kr/&quot;</text>
+<text x="78.0" y="318.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">2</text>
+<text x="179.0" y="318" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="440.0" lengthAdjust="spacingAndGlyphs">f&quot;{first}/{last}/{STAT_CODE}/{CYCLE}/…&quot;)</text>
+<text x="78.0" y="366.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">3</text>
+<text x="102.0" y="366" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="583.0" lengthAdjust="spacingAndGlyphs">with urllib.request.urlopen(url, timeout=30) as resp:</text>
+<text x="78.0" y="414.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">4</text>
+<text x="146.0" y="414" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="506.0" lengthAdjust="spacingAndGlyphs">data = json.loads(resp.read().decode(&quot;utf-8&quot;))</text>
+<text x="78.0" y="462.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">5</text>
+<text x="102.0" y="462" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="363.0" lengthAdjust="spacingAndGlyphs">if &quot;StatisticSearch&quot; not in data:</text>
+<text x="78.0" y="510.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6</text>
+<text x="146.0" y="510" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="341.0" lengthAdjust="spacingAndGlyphs">result = data.get(&quot;RESULT&quot;, {})</text>
+<rect x="70" y="335" width="660" height="44" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24155;0.24404;0.32555;0.32803;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="770" y="196" width="450" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<rect x="790" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="875.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">실행 컴퓨터</text>
+<rect x="1030" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="1115.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">ECOS 서버</text>
+<path d="M960,240 L1030,240" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M960,240 L1030,240" keyPoints="0;0;1;1" keyTimes="0;0.24652;0.25845;1" calcMode="linear" dur="100.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24503;0.24652;0.26044;0.26193;1" dur="100.6s" repeatCount="indefinite"/></circle>
+<rect x="1031" y="215" width="168" height="50" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25845;0.26093;0.27386;0.27634;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<g opacity="0"><text x="790.0" y="320.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">방식 = GET(자료를 가져오는 요청)</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.26044;0.26292;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="358.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">조건은 주소에 포함, 본문 없음</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.26541;0.26789;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="396" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" font-weight="normal" fill="#1F2A44" textLength="110.0" lengthAdjust="spacingAndGlyphs">timeout=30</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.27038;0.27286;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="434.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">30초 안에 응답이 없으면 중단</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.27535;0.27783;1" dur="100.6s" repeatCount="indefinite"/></g>
+<rect x="48" y="618" width="580" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.29324;0.29573;0.31958;0.32207;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">요청 = GET, 30초 안에 응답이 없으면 중단<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.29324;0.29573;1" dur="100.6s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.32803;0.33101;0.41650;0.41948;1" dur="100.6s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 코드의 요청</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">③ 응답 도착</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">서버가 보낸 응답을 resp로 받음</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">4 / 10</text>
+<rect x="60" y="196" width="680" height="380" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="232.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6주 코드의 요청 부분(주소는 일부 생략)</text>
+<text x="78.0" y="270.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">1</text>
+<text x="102.0" y="270" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="627.0" lengthAdjust="spacingAndGlyphs">url = (f&quot;https://ecos.bok.or.kr/api/…/{API_KEY}/json/kr/&quot;</text>
+<text x="78.0" y="318.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">2</text>
+<text x="179.0" y="318" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="440.0" lengthAdjust="spacingAndGlyphs">f&quot;{first}/{last}/{STAT_CODE}/{CYCLE}/…&quot;)</text>
+<text x="78.0" y="366.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">3</text>
+<text x="102.0" y="366" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="583.0" lengthAdjust="spacingAndGlyphs">with urllib.request.urlopen(url, timeout=30) as resp:</text>
+<text x="78.0" y="414.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">4</text>
+<text x="146.0" y="414" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="506.0" lengthAdjust="spacingAndGlyphs">data = json.loads(resp.read().decode(&quot;utf-8&quot;))</text>
+<text x="78.0" y="462.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">5</text>
+<text x="102.0" y="462" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="363.0" lengthAdjust="spacingAndGlyphs">if &quot;StatisticSearch&quot; not in data:</text>
+<text x="78.0" y="510.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6</text>
+<text x="146.0" y="510" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="341.0" lengthAdjust="spacingAndGlyphs">result = data.get(&quot;RESULT&quot;, {})</text>
+<rect x="70" y="335" width="660" height="44" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.33300;0.33549;0.41700;0.41948;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="770" y="196" width="450" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<rect x="790" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="875.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">실행 컴퓨터</text>
+<rect x="1030" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="1115.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">ECOS 서버</text>
+<path d="M960,240 L1030,240" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M1030,240 L960,240" keyPoints="0;0;1;1" keyTimes="0;0.33797;0.34990;1" calcMode="linear" dur="100.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.33648;0.33797;0.35189;0.35338;1" dur="100.6s" repeatCount="indefinite"/></circle>
+<rect x="791" y="215" width="168" height="50" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.34990;0.35239;0.36531;0.36779;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<g opacity="0"><text x="790.0" y="320.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">상태 코드 = 200</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.35189;0.35437;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="358.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">헤더 = application/json</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.35686;0.35934;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="396.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">본문 = JSON 형식의 글자</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.36183;0.36431;1" dur="100.6s" repeatCount="indefinite"/></g>
+<rect x="48" y="618" width="415" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.38469;0.38718;0.41103;0.41352;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">응답 = 상태 코드, 헤더, 본문<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.38469;0.38718;1" dur="100.6s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.41948;0.42247;0.50795;0.51093;1" dur="100.6s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 코드의 요청</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">④ 본문을 자료로 변환</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">json.loads가 글자를 묶음과 목록으로 변환</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">5 / 10</text>
+<rect x="60" y="196" width="680" height="380" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="232.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6주 코드의 요청 부분(주소는 일부 생략)</text>
+<text x="78.0" y="270.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">1</text>
+<text x="102.0" y="270" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="627.0" lengthAdjust="spacingAndGlyphs">url = (f&quot;https://ecos.bok.or.kr/api/…/{API_KEY}/json/kr/&quot;</text>
+<text x="78.0" y="318.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">2</text>
+<text x="179.0" y="318" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="440.0" lengthAdjust="spacingAndGlyphs">f&quot;{first}/{last}/{STAT_CODE}/{CYCLE}/…&quot;)</text>
+<text x="78.0" y="366.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">3</text>
+<text x="102.0" y="366" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="583.0" lengthAdjust="spacingAndGlyphs">with urllib.request.urlopen(url, timeout=30) as resp:</text>
+<text x="78.0" y="414.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">4</text>
+<text x="146.0" y="414" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="506.0" lengthAdjust="spacingAndGlyphs">data = json.loads(resp.read().decode(&quot;utf-8&quot;))</text>
+<text x="78.0" y="462.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">5</text>
+<text x="102.0" y="462" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="363.0" lengthAdjust="spacingAndGlyphs">if &quot;StatisticSearch&quot; not in data:</text>
+<text x="78.0" y="510.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6</text>
+<text x="146.0" y="510" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="341.0" lengthAdjust="spacingAndGlyphs">result = data.get(&quot;RESULT&quot;, {})</text>
+<rect x="70" y="383" width="660" height="44" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42445;0.42694;0.50845;0.51093;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="770" y="196" width="450" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<rect x="790" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="875.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">실행 컴퓨터</text>
+<rect x="1030" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="1115.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">ECOS 서버</text>
+<path d="M960,240 L1030,240" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<g opacity="0"><text x="790.0" y="320.0" font-size="20" font-weight="bold" text-anchor="start" fill="#111111">변환 전 = 글자</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.43141;0.43390;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="358" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" font-weight="normal" fill="#1F2A44" textLength="363.0" lengthAdjust="spacingAndGlyphs">{&quot;StatisticSearch&quot;: {&quot;row&quot;: […]}}</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.43638;0.43887;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="396.0" font-size="20" font-weight="bold" text-anchor="start" fill="#111111">변환 후 = 묶음 { }과 목록 [ ]</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.44135;0.44384;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="434" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" font-weight="normal" fill="#1F2A44" textLength="330.0" lengthAdjust="spacingAndGlyphs">data[&quot;StatisticSearch&quot;][&quot;row&quot;]</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.44632;0.44881;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="472.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">이름으로 값을 찾을 수 있음</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.45129;0.45378;1" dur="100.6s" repeatCount="indefinite"/></g>
+<rect x="48" y="618" width="721" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.47614;0.47863;0.50249;0.50497;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">json.loads = 본문의 글자를 프로그램의 자료로 변환<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.47614;0.47863;1" dur="100.6s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.51093;0.51392;0.59940;0.60239;1" dur="100.6s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 코드의 요청</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">⑤ 확인과 건수 대조</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">정상 응답인지 확인하고, 받은 건수를 전체 건수와 대조</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">6 / 10</text>
+<rect x="60" y="196" width="680" height="380" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="232.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6주 코드의 요청 부분(주소는 일부 생략)</text>
+<text x="78.0" y="270.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">1</text>
+<text x="102.0" y="270" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="627.0" lengthAdjust="spacingAndGlyphs">url = (f&quot;https://ecos.bok.or.kr/api/…/{API_KEY}/json/kr/&quot;</text>
+<text x="78.0" y="318.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">2</text>
+<text x="179.0" y="318" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="440.0" lengthAdjust="spacingAndGlyphs">f&quot;{first}/{last}/{STAT_CODE}/{CYCLE}/…&quot;)</text>
+<text x="78.0" y="366.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">3</text>
+<text x="102.0" y="366" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="583.0" lengthAdjust="spacingAndGlyphs">with urllib.request.urlopen(url, timeout=30) as resp:</text>
+<text x="78.0" y="414.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">4</text>
+<text x="146.0" y="414" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="506.0" lengthAdjust="spacingAndGlyphs">data = json.loads(resp.read().decode(&quot;utf-8&quot;))</text>
+<text x="78.0" y="462.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">5</text>
+<text x="102.0" y="462" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="363.0" lengthAdjust="spacingAndGlyphs">if &quot;StatisticSearch&quot; not in data:</text>
+<text x="78.0" y="510.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6</text>
+<text x="146.0" y="510" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="341.0" lengthAdjust="spacingAndGlyphs">result = data.get(&quot;RESULT&quot;, {})</text>
+<rect x="70" y="431" width="660" height="92" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.51590;0.51839;0.59990;0.60239;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="770" y="196" width="450" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<rect x="790" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="875.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">실행 컴퓨터</text>
+<rect x="1030" y="214" width="170" height="52" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="1115.0" y="248.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44">ECOS 서버</text>
+<path d="M960,240 L1030,240" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<g opacity="0"><text x="790.0" y="320.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">StatisticSearch가 없으면 = 오류 응답</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.52286;0.52535;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="358.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">RESULT의 오류 코드를 읽음</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.52783;0.53032;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="396.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">전체 건수 list_total_count = 12</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.53280;0.53529;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="434.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">1~10번 요청 = 10건, 11~20번 요청 = 2건</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.53777;0.54026;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="790.0" y="472.0" font-size="20" font-weight="bold" text-anchor="start" fill="#111111">10 + 2 = 12 → 모두 받음</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.54274;0.54523;1" dur="100.6s" repeatCount="indefinite"/></g>
+<rect x="48" y="618" width="598" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.56759;0.57008;0.59394;0.59642;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">오류가 없어도 받은 건수와 전체 건수를 대조<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.56759;0.57008;1" dur="100.6s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.60239;0.60537;0.73459;0.73757;1" dur="100.6s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 코드의 요청</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">실패했을 때 — 문제가 있는 곳</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">코드에서 확인되는 모습과 먼저 확인할 것</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">7 / 10</text>
+<text x="80.0" y="216.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">문제가 있는 곳</text>
+<text x="330.0" y="216.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">코드에서의 모습</text>
+<text x="790.0" y="216.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">먼저 확인할 것</text>
+<rect x="60" y="230" width="1160" height="50" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="263.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">연결</text>
+<text x="330.0" y="263.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">연결 오류, 시간 초과</text>
+<text x="790.0" y="263.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">다른 사이트는 열리는가</text>
+<rect x="61" y="231" width="1158" height="48" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.60934;0.61183;0.61879;0.62127;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="57" y="227" width="1166" height="56" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.60835;0.61083;0.61879;0.62127;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="60" y="288" width="1160" height="50" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="321.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">주소</text>
+<text x="330.0" y="321.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">상태 코드 404</text>
+<text x="790.0" y="321.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">주소의 철자와 경로</text>
+<rect x="61" y="289" width="1158" height="48" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62425;0.62674;0.63370;0.63618;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="57" y="285" width="1166" height="56" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62326;0.62575;0.63370;0.63618;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="60" y="346" width="1160" height="50" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="379.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">인증</text>
+<text x="330.0" y="379.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">401, 403 또는 본문의 오류 코드</text>
+<text x="790.0" y="379.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">계정, 인증키</text>
+<rect x="61" y="347" width="1158" height="48" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.63917;0.64165;0.64861;0.65109;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="57" y="343" width="1166" height="56" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.63817;0.64066;0.64861;0.65109;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="60" y="404" width="1160" height="50" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="437.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">요청 조건</text>
+<text x="330.0" y="437.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">400 또는 본문의 오류 코드</text>
+<text x="790.0" y="437.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">조건의 이름과 값의 형식</text>
+<rect x="61" y="405" width="1158" height="48" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.65408;0.65656;0.66352;0.66600;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="57" y="401" width="1166" height="56" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.65308;0.65557;0.66352;0.66600;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="60" y="462" width="1160" height="50" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="495.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">횟수</text>
+<text x="330.0" y="495.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">429</text>
+<text x="790.0" y="495.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">요청 사이의 간격</text>
+<rect x="61" y="463" width="1158" height="48" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.66899;0.67147;0.67843;0.68091;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="57" y="459" width="1166" height="56" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.66799;0.67048;0.67843;0.68091;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="60" y="520" width="1160" height="50" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="553.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">서버</text>
+<text x="330.0" y="553.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">500, 503</text>
+<text x="790.0" y="553.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">잠시 뒤에 같은 요청</text>
+<rect x="61" y="521" width="1158" height="48" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.68390;0.68638;0.69334;0.69583;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="57" y="517" width="1166" height="56" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.68290;0.68539;0.69334;0.69583;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<rect x="48" y="618" width="542" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.70278;0.70527;0.72913;0.73161;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">문제가 있는 곳을 구분한 뒤 수정을 요청<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.70278;0.70527;1" dur="100.6s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.73757;0.74056;0.81213;0.81511;1" dur="100.6s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 코드의 요청</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">스킬을 부르는 요청도 같은 길</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">글과 파일이 요청에 포함되어 서버로 전송</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">8 / 10</text>
+<rect x="60" y="196" width="480" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">내 컴퓨터</text>
+<rect x="740" y="196" width="480" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="758.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">Gemini 서버(계정)</text>
+<rect x="84" y="270" width="330" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="249.0" y="305.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">보고서 파일(원본)</text>
+<rect x="84" y="346" width="330" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="249.0" y="381.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">입력창에 입력한 글</text>
+<rect x="764" y="270" width="330" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="929.0" y="305.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">스킬의 지침</text>
+<path d="M414,298 L764,374" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<text x="640.0" y="318.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44" opacity="0">사본 전송<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.75149;0.75398;1" dur="100.6s" repeatCount="indefinite"/></text>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M414,298 L764,374" keyPoints="0;0;1;1" keyTimes="0;0.75149;0.76541;1" calcMode="linear" dur="100.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.75000;0.75149;0.76740;0.76889;1" dur="100.6s" repeatCount="indefinite"/></circle>
+<g opacity="0"><rect x="764" y="346" width="330" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="929.0" y="381.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">보고서 파일의 사본</text><rect x="764" y="422" width="330" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="929.0" y="457.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">대화 기록</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.76541;0.76789;1" dur="100.6s" repeatCount="indefinite"/></g>
+<text x="84.0" y="468.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44" opacity="0">원본은 내 컴퓨터에 그대로 있음<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.76740;0.76988;1" dur="100.6s" repeatCount="indefinite"/></text>
+<rect x="48" y="618" width="667" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.78032;0.78280;0.80666;0.80915;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">올리기 = 복사, 지침과 파일의 사본은 서버에 보관<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.78032;0.78280;1" dur="100.6s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.81511;0.81809;0.90557;0.90855;1" dur="100.6s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 코드의 요청</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">올린 뒤에 원본을 수정한 경우</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">서버의 사본은 올린 시점의 내용</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">9 / 10</text>
+<rect x="60" y="196" width="480" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">내 컴퓨터</text>
+<rect x="740" y="196" width="480" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="758.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">Gemini 서버(계정)</text>
+<rect x="764" y="270" width="330" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="929.0" y="305.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">수정 전의 사본</text>
+<g opacity="0"><rect x="84" y="270" width="330" height="56" rx="8" fill="#FFFFFF" stroke="#C0392B" stroke-width="2"/><text x="249.0" y="305.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#C0392B">수정한 보고서 파일</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.82306;0.82555;1" dur="100.6s" repeatCount="indefinite"/></g>
+<text x="764.0" y="362.0" font-size="20" font-weight="bold" text-anchor="start" fill="#1F2A44" opacity="0">스킬이 사용하는 것 = 수정 전의 사본<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.83300;0.83549;1" dur="100.6s" repeatCount="indefinite"/></text>
+<path d="M414,298 L764,450" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<text x="640.0" y="356.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44" opacity="0">다시 올림<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.84692;0.84940;1" dur="100.6s" repeatCount="indefinite"/></text>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M414,298 L764,450" keyPoints="0;0;1;1" keyTimes="0;0.84692;0.86083;1" calcMode="linear" dur="100.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.84543;0.84692;0.86282;0.86431;1" dur="100.6s" repeatCount="indefinite"/></circle>
+<g opacity="0"><rect x="764" y="422" width="330" height="56" rx="8" fill="#FFFFFF" stroke="#C0392B" stroke-width="2"/><text x="929.0" y="457.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#C0392B">수정본의 사본</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.86083;0.86332;1" dur="100.6s" repeatCount="indefinite"/></g>
+<rect x="48" y="618" width="562" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.87376;0.87624;0.90010;0.90258;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">원본을 수정하면 다시 올려야 스킬에 반영<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.87376;0.87624;1" dur="100.6s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.90855;0.91153;0.99702;1.00000;1" dur="100.6s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 코드의 요청</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">다른 PC에서 같은 계정으로 로그인</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">스킬은 PC가 아니라 서버에 보관</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">10 / 10</text>
+<rect x="60" y="196" width="330" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">강의실 PC</text>
+<rect x="475" y="196" width="330" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="493.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">Gemini 서버(계정)</text>
+<rect x="890" y="196" width="330" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="908.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">집 PC</text>
+<rect x="495" y="270" width="290" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="640.0" y="305.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">스킬(지침과 파일의 사본)</text>
+<rect x="495" y="346" width="290" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="640.0" y="381.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">대화 기록</text>
+<rect x="80" y="270" width="290" height="56" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="225.0" y="305.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">내려받은 결과 파일</text>
+<path d="M390,298 L475,298" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<path d="M805,298 L890,298" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M805,298 L890,298" keyPoints="0;0;1;1" keyTimes="0;0.92644;0.93837;1" calcMode="linear" dur="100.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.92495;0.92644;0.94036;0.94185;1" dur="100.6s" repeatCount="indefinite"/></circle>
+<g opacity="0"><text x="910.0" y="300.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">같은 계정으로 로그인</text><text x="910.0" y="334.0" font-size="20" font-weight="bold" text-anchor="start" fill="#1F2A44">→ 스킬이 표시됨</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.93837;0.94085;1" dur="100.6s" repeatCount="indefinite"/></g>
+<g opacity="0"><rect x="910" y="400" width="290" height="56" rx="8" fill="#FFFFFF" stroke="#C0392B" stroke-width="2" stroke-dasharray="8,6"/><text x="1055.0" y="435.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#C0392B">결과 파일 없음</text><text x="910.0" y="494.0" font-size="20" font-weight="bold" text-anchor="start" fill="#C0392B">내려받은 파일은 가져가야 함</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.95030;0.95278;1" dur="100.6s" repeatCount="indefinite"/></g>
+<rect x="48" y="618" width="712" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.96521;0.96769;0.99155;0.99404;1" dur="100.6s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">스킬과 대화 기록은 서버에, 내려받은 파일은 그 PC에<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.96521;0.96769;1" dur="100.6s" repeatCount="indefinite"/></text>
+</g>
+<rect x="0" y="714" width="1280" height="6" fill="#EEF1F5"/>
+<rect x="0" y="714" width="0" height="6" fill="#7A8BA6"><animate attributeName="width" values="0;1280" keyTimes="0;1" dur="100.6s" repeatCount="indefinite"/></rect>
+</svg></div>
+<div id="wait">▶ 클릭</div>
+<div id="hint">클릭 · → · Space = 다음 &nbsp; ← = 이전 &nbsp; F = 전체 화면 &nbsp; R = 처음부터</div>
+<script>
+const STOPS = [[1.2, 1.25, "1: 1~2줄"], [3.8, 3.85, "1: 3줄"], [6.4, 6.45, "1: 4줄"], [9.0, 9.05, "1: 5~6줄"], [11.45, 13.75, "1: 주소 작성 → 요청 → 변환 → 확인"], [14.25, 14.3, "1: scene end"], [15.6, 15.65, "2: ① 조건 값으로 주소 작성"], [19.6, 19.65, "2: 내용"], [20.65, 22.95, "2: 변수의 값으로 주소가 완성됨"], [23.45, 23.5, "2: scene end"], [24.8, 24.85, "3: ② 요청과 시간 제한"], [28.8, 28.85, "3: 내용"], [29.85, 32.15, "3: 요청 = GET, 30초 안에 응답이 없으면 중단"], [32.65, 32.7, "3: scene end"], [34.0, 34.05, "4: ③ 응답 도착"], [38.0, 38.05, "4: 내용"], [39.05, 41.35, "4: 응답 = 상태 코드, 헤더, 본문"], [41.85, 41.9, "4: scene end"], [43.2, 43.25, "5: ④ 본문을 자료로 변환"], [47.2, 47.25, "5: 내용"], [48.25, 50.55, "5: json.loads = 본문의 글자를 프로그램의 자료로 변환"], [51.05, 51.1, "5: scene end"], [52.4, 52.45, "6: ⑤ 확인과 건수 대조"], [56.4, 56.45, "6: 내용"], [57.45, 59.75, "6: 오류가 없어도 받은 건수와 전체 건수를 대조"], [60.25, 60.3, "6: scene end"], [61.7, 61.75, "7: 연결"], [63.2, 63.25, "7: 주소"], [64.7, 64.75, "7: 인증"], [66.2, 66.25, "7: 요청 조건"], [67.7, 67.75, "7: 횟수"], [69.2, 69.25, "7: 서버"], [71.05, 73.35, "7: 문제가 있는 곳을 구분한 뒤 수정을 요청"], [73.85, 73.9, "7: scene end"], [75.2, 75.25, "8: 원본은 내 컴퓨터에"], [77.6, 77.65, "8: 사본이 서버에"], [78.85, 81.15, "8: 올리기 = 복사, 지침과 파일의 사본은 서버에 보관"], [81.65, 81.7, "8: scene end"], [84.4, 84.45, "9: 수정 전의 사본"], [87.2, 87.25, "9: 다시 올림"], [88.25, 90.55, "9: 원본을 수정하면 다시 올려야 스킬에 반영"], [91.05, 91.1, "9: scene end"], [92.4, 92.45, "10: 스킬은 서버에"], [95.0, 95.05, "10: 집 PC에서도 스킬 표시"], [96.2, 96.25, "10: 내려받은 파일은 그 PC에만"], [97.45, 99.75, "10: 스킬과 대화 기록은 서버에, 내려받은 파일은 그 PC에"], [100.25, 0.0, "10: scene end"]];            // [stop, resume, label] in seconds of the SVG timeline
+const AUTOSTART = false;    // false = show the start cover and hold until the first click (motion guide 2026-10-13)
+const svg = document.querySelector('#stage svg');
+const wait = document.getElementById('wait');
+const cover = document.getElementById('cover');
+let i = 0, waiting = false, started = AUTOSTART;
+
+function holdStart() {
+  i = 0; waiting = false; started = false;
+  svg.pauseAnimations(); svg.setCurrentTime(0);
+  wait.classList.remove('on'); cover.classList.add('on');
+}
+function waitAt(k) {
+  i = k; waiting = true;
+  svg.pauseAnimations(); svg.setCurrentTime(STOPS[k][0]);
+  wait.classList.add('on');
+}
+function next() {
+  if (!started) { started = true; cover.classList.remove('on'); svg.unpauseAnimations(); return; }
+  if (!waiting) { waitAt(i); return; }          // playing: jump to the next stop at once
+  const resume = STOPS[i][1];
+  waiting = false; wait.classList.remove('on');
+  i = (i + 1) % STOPS.length;
+  svg.setCurrentTime(resume); svg.unpauseAnimations();
+}
+function prev() { if (started) waitAt(Math.max(0, i - 1)); }
+function restart() {
+  if (!AUTOSTART) { holdStart(); return; }
+  i = 0; waiting = false; wait.classList.remove('on'); svg.setCurrentTime(0); svg.unpauseAnimations();
+}
+function tick() {
+  if (started && !waiting && svg.getCurrentTime() >= STOPS[i][0]) waitAt(i);
+  requestAnimationFrame(tick);
+}
+document.addEventListener('click', next);
+document.addEventListener('keydown', e => {
+  if (['ArrowRight', ' ', 'Enter', 'PageDown'].includes(e.key)) { e.preventDefault(); next(); }
+  else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); prev(); }
+  else if (e.key === 'f' || e.key === 'F') {
+    if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen();
+  }
+  else if (e.key === 'r' || e.key === 'R') restart();
+});
+setTimeout(() => { document.getElementById('hint').style.opacity = 0; }, 6000);
+if (AUTOSTART) { svg.setCurrentTime(0); svg.unpauseAnimations(); } else { holdStart(); }
+requestAnimationFrame(tick);
+</script></body></html>

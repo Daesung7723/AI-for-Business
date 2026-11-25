@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주소에서 서버까지</title>
+<style>
+html,body{margin:0;height:100%;background:#fff;overflow:hidden;cursor:pointer;
+  font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage svg{width:100vw;height:100vh}
+#wait{position:fixed;right:22px;bottom:22px;padding:6px 14px;border-radius:16px;background:#1F2A44;color:#fff;
+  font-size:15px;font-weight:bold;opacity:0;transition:opacity .2s}
+#wait.on{opacity:.85;animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+#hint{position:fixed;left:22px;bottom:22px;font-size:13px;color:#8A94A6;transition:opacity 1s}
+#cover{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+  background:#FFFFFF;z-index:5}
+#cover.on{display:flex}
+#cover .t{font-size:34px;font-weight:bold;color:#111111}
+#cover .s{font-size:20px;color:#44506A}
+#cover .b{padding:10px 26px;border-radius:24px;background:#1F2A44;color:#FFFFFF;font-size:24px;font-weight:bold}
+</style></head><body>
+<div id="cover"><div class="t">주소에서 서버까지</div><div class="s">12주 2.3 — 주소의 네 부분이 요청을 정하는 과정</div><div class="b">▶ 클릭하면 시작</div></div>
+<div id="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A44"/></marker><marker id="arwT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4A7D7C"/></marker></defs>
+<rect width="1280" height="720" fill="#FFFFFF"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.00000;0.00320;0.15032;0.15352;1" dur="93.8s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 주소의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">주소의 네 부분</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">7주 코드가 KOSIS에 보낸 주소 — 왼쪽부터 순서대로</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">1 / 8</text>
+<rect x="60" y="200" width="1160" height="64" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="69.6" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="99.2" lengthAdjust="spacingAndGlyphs">https://</text>
+<path d="M72.6,270 v6 h93.2 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="168.8" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="99.2" lengthAdjust="spacingAndGlyphs">kosis.kr</text>
+<path d="M171.8,270 v6 h93.2 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="268.0" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="508.4" lengthAdjust="spacingAndGlyphs">/openapi/Param/statisticsParameterData.do</text>
+<path d="M271.0,270 v6 h502.4 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="776.4" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="434.0" lengthAdjust="spacingAndGlyphs">?orgId=101&amp;tblId=DT_1JC1511&amp;prdSe=Y</text>
+<path d="M779.4,270 v6 h428.0 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<rect x="60" y="372" width="272" height="150" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<path d="M119.2,276 V310 H196.0 V372" fill="none" stroke="#7A8BA6" stroke-width="2" stroke-dasharray="5,5"/>
+<text x="78.0" y="414.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">프로토콜</text>
+<text x="78.0" y="456.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">통신 규칙(여러 종류)</text>
+<text x="78.0" y="488.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">이 주소 = https</text>
+<rect x="356" y="372" width="272" height="150" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<path d="M218.4,276 V310 H492.0 V372" fill="none" stroke="#7A8BA6" stroke-width="2" stroke-dasharray="5,5"/>
+<text x="374.0" y="414.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">도메인</text>
+<text x="374.0" y="456.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">요청을 받는</text>
+<text x="374.0" y="488.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">서버의 이름</text>
+<rect x="652" y="372" width="272" height="150" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<path d="M522.2,276 V310 H788.0 V372" fill="none" stroke="#7A8BA6" stroke-width="2" stroke-dasharray="5,5"/>
+<text x="670.0" y="414.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">경로</text>
+<text x="670.0" y="456.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">그 서버에서 요청하는</text>
+<text x="670.0" y="488.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">자료나 기능</text>
+<rect x="948" y="372" width="272" height="150" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<path d="M993.4,276 V310 H1084.0 V372" fill="none" stroke="#7A8BA6" stroke-width="2" stroke-dasharray="5,5"/>
+<text x="966.0" y="414.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">조건</text>
+<text x="966.0" y="456.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">「이름=값」을 &amp;로 연결</text>
+<text x="966.0" y="488.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">? 뒤에 둠</text>
+<rect x="61" y="373" width="270" height="148" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.00746;0.01013;0.02932;0.03198;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="357" y="373" width="270" height="148" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.03838;0.04104;0.05490;0.05757;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="653" y="373" width="270" height="148" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.06397;0.06663;0.08049;0.08316;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="949" y="373" width="270" height="148" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.08955;0.09222;0.10821;0.11087;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="60" y="540" width="8" height="64" rx="3" fill="#DCEBFF"/>
+<g opacity="0"><text x="86.0" y="564.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">프로토콜 = 통신 규칙, 여러 종류가 있음</text><text x="86.0" y="597.0" font-size="22" font-weight="normal" text-anchor="start" fill="#1F2A44">https = 암호화해서 전송,  http = 암호화 없이 전송,  mailto = 메일 작성</text><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.00746;0.01013;0.02932;0.03198;1" dur="93.8s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="86.0" y="564.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">도메인 = 요청을 받는 서버의 이름</text><text x="86.0" y="597.0" font-size="22" font-weight="normal" text-anchor="start" fill="#1F2A44">실제 전송에는 서버의 번호(IP 주소)로 바꾸어 사용</text><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.03838;0.04104;0.05490;0.05757;1" dur="93.8s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="86.0" y="564.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">경로 = 그 서버 안에서 요청하는 자료나 기능</text><text x="86.0" y="597.0" font-size="22" font-weight="normal" text-anchor="start" fill="#1F2A44">「/」로 단계를 구분,  서버에 없는 경로를 요청하면 상태 코드 404</text><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.06397;0.06663;0.08049;0.08316;1" dur="93.8s" repeatCount="indefinite"/></g>
+<g opacity="0"><text x="86.0" y="564.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">조건 = 「이름=값」을 &amp;로 연결해 ? 뒤에 둠</text><text x="86.0" y="597.0" font-size="22" font-weight="normal" text-anchor="start" fill="#1F2A44">값을 바꾸면 응답이 달라짐 — orgId = 기관,  tblId = 통계표,  prdSe = 주기</text><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.08955;0.09222;0.10821;0.11087;1" dur="93.8s" repeatCount="indefinite"/></g>
+<rect x="67.6" y="208" width="103.2" height="48" rx="8" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="x" values="67.6;67.6;67.6;166.8;166.8;266.0;266.0;774.4;774.4" keyTimes="0.00000;0.00640;0.03198;0.03731;0.05757;0.06290;0.08316;0.08849;1.00000" dur="93.8s" repeatCount="indefinite"/><animate attributeName="width" values="103.2;103.2;103.2;103.2;103.2;512.4;512.4;438.0;438.0" keyTimes="0.00000;0.00640;0.03198;0.03731;0.05757;0.06290;0.08316;0.08849;1.00000" dur="93.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.00640;0.00906;0.15085;0.15352;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="48" y="618" width="515" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.11620;0.11887;0.14446;0.14712;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">주소 = 프로토콜, 도메인, 경로, 조건<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.11620;0.11887;1" dur="93.8s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.15352;0.15672;0.28038;0.28358;1" dur="93.8s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 주소의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">도메인에서 서버의 번호로</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">도메인은 사람이 읽는 이름 — 전송에는 번호(IP 주소)를 사용</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">2 / 8</text>
+<rect x="60" y="200" width="1160" height="64" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="69.6" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="99.2" lengthAdjust="spacingAndGlyphs">https://</text>
+<path d="M72.6,270 v6 h93.2 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="168.8" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="99.2" lengthAdjust="spacingAndGlyphs">kosis.kr</text>
+<path d="M171.8,270 v6 h93.2 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="268.0" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="508.4" lengthAdjust="spacingAndGlyphs">/openapi/Param/statisticsParameterData.do</text>
+<path d="M271.0,270 v6 h502.4 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="776.4" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="434.0" lengthAdjust="spacingAndGlyphs">?orgId=101&amp;tblId=DT_1JC1511&amp;prdSe=Y</text>
+<path d="M779.4,270 v6 h428.0 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<rect x="166.8" y="208" width="103.2" height="48" rx="8" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.15778;0.16045;0.28092;0.28358;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="60" y="340" width="320" height="150" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="382.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">내 컴퓨터</text>
+<text x="78.0" y="424.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">요청할 이름 = kosis.kr</text>
+<rect x="480" y="340" width="320" height="150" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="498.0" y="382.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">DNS</text>
+<text x="498.0" y="424.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">도메인을 IP 주소로</text>
+<text x="498.0" y="456.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">바꾸는 체계</text>
+<rect x="900" y="340" width="320" height="150" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="918.0" y="382.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">서버</text>
+<text x="918.0" y="424.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">kosis.kr</text>
+<text x="918.0" y="456.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">요청을 받는 컴퓨터</text>
+<path d="M380,388 L480,388" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<path d="M480,442 L380,442" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<path d="M220,490 L220,540 L1060,540 L1060,490" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<text x="430.0" y="326.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44" opacity="0">이 이름의 번호는?<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.17058;0.17324;1" dur="93.8s" repeatCount="indefinite"/></text>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M380,388 L480,388" keyPoints="0;0;1;1" keyTimes="0;0.17058;0.18337;1" calcMode="linear" dur="93.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16898;0.17058;0.18550;0.18710;1" dur="93.8s" repeatCount="indefinite"/></circle>
+<rect x="481" y="341" width="318" height="148" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18337;0.18603;0.19989;0.20256;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<text x="430.0" y="516.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44" opacity="0">번호(IP 주소)<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.18977;0.19243;1" dur="93.8s" repeatCount="indefinite"/></text>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M480,442 L380,442" keyPoints="0;0;1;1" keyTimes="0;0.18977;0.20256;1" calcMode="linear" dur="93.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18817;0.18977;0.20469;0.20629;1" dur="93.8s" repeatCount="indefinite"/></circle>
+<text x="78.0" y="456.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44" opacity="0">받은 번호 = IP 주소<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.20256;0.20522;1" dur="93.8s" repeatCount="indefinite"/></text>
+<text x="640.0" y="572.0" font-size="20" font-weight="bold" text-anchor="middle" fill="#1F2A44" opacity="0">IP 주소로 요청을 전송<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.21535;0.21802;1" dur="93.8s" repeatCount="indefinite"/></text>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M220,490 L220,540 L1060,540 L1060,490" keyPoints="0;0;1;1" keyTimes="0;0.21535;0.23454;1" calcMode="linear" dur="93.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.21375;0.21535;0.23667;0.23827;1" dur="93.8s" repeatCount="indefinite"/></circle>
+<rect x="901" y="341" width="318" height="148" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23454;0.23721;0.24254;0.24520;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="48" y="618" width="712" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24627;0.24893;0.27452;0.27719;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">도메인은 사람이 읽는 이름, 전송에는 IP 주소를 사용<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.24627;0.24893;1" dur="93.8s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28358;0.28678;0.39126;0.39446;1" dur="93.8s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 주소의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">http와 https, 포트</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">프로토콜에 따라 전송 방식과 기본 포트가 정해짐</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">3 / 8</text>
+<rect x="60" y="200" width="1160" height="64" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="69.6" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="99.2" lengthAdjust="spacingAndGlyphs">https://</text>
+<path d="M72.6,270 v6 h93.2 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="168.8" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="99.2" lengthAdjust="spacingAndGlyphs">kosis.kr</text>
+<path d="M171.8,270 v6 h93.2 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="268.0" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="508.4" lengthAdjust="spacingAndGlyphs">/openapi/Param/statisticsParameterData.do</text>
+<path d="M271.0,270 v6 h502.4 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="776.4" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="434.0" lengthAdjust="spacingAndGlyphs">?orgId=101&amp;tblId=DT_1JC1511&amp;prdSe=Y</text>
+<path d="M779.4,270 v6 h428.0 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<rect x="67.6" y="208" width="103.2" height="48" rx="8" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28785;0.29051;0.39179;0.39446;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="60" y="304" width="1160" height="70" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="84.0" y="350" font-family="Consolas, 'Malgun Gothic', monospace" font-size="26" font-weight="bold" fill="#111111" textLength="105.0" lengthAdjust="spacingAndGlyphs">http://</text>
+<text x="280.0" y="349.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">암호화 없이 전송</text>
+<text x="620.0" y="349.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">기본 포트 80</text>
+<rect x="60" y="388" width="1160" height="70" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="84.0" y="434" font-family="Consolas, 'Malgun Gothic', monospace" font-size="26" font-weight="bold" fill="#111111" textLength="120.0" lengthAdjust="spacingAndGlyphs">https://</text>
+<text x="280.0" y="433.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">암호화해서 전송</text>
+<text x="620.0" y="433.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">기본 포트 443</text>
+<text x="920.0" y="433.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">이 주소의 프로토콜</text>
+<rect x="54" y="298" width="1172" height="82" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28998;0.29264;0.31077;0.31343;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="61" y="389" width="1158" height="68" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.31876;0.32143;0.39179;0.39446;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="54" y="382" width="1172" height="82" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.31770;0.32036;0.39179;0.39446;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<g opacity="0"><text x="60.0" y="512.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">포트 = 한 컴퓨터 안에서 서비스를 구분하는 번호</text><text x="60.0" y="548.0" font-size="22" font-weight="normal" text-anchor="start" fill="#1F2A44">주소에 포트를 적지 않으면 기본값을 사용 — 이 주소는 443</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.34115;0.34382;1" dur="93.8s" repeatCount="indefinite"/></g>
+<rect x="48" y="618" width="741" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.35714;0.35981;0.38539;0.38806;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">https = 암호화해서 전송, 포트를 생략하면 기본값 443<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.35714;0.35981;1" dur="93.8s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39446;0.39765;0.52345;0.52665;1" dur="93.8s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 주소의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">경로 = 서버의 기능</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">같은 서버라도 경로가 다르면 다른 기능에 요청</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">4 / 8</text>
+<rect x="60" y="200" width="1160" height="64" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="69.6" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="99.2" lengthAdjust="spacingAndGlyphs">https://</text>
+<path d="M72.6,270 v6 h93.2 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="168.8" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="99.2" lengthAdjust="spacingAndGlyphs">kosis.kr</text>
+<path d="M171.8,270 v6 h93.2 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="268.0" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="508.4" lengthAdjust="spacingAndGlyphs">/openapi/Param/statisticsParameterData.do</text>
+<path d="M271.0,270 v6 h502.4 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="776.4" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="434.0" lengthAdjust="spacingAndGlyphs">?orgId=101&amp;tblId=DT_1JC1511&amp;prdSe=Y</text>
+<path d="M779.4,270 v6 h428.0 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<rect x="266.0" y="208" width="512.4" height="48" rx="8" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39872;0.40139;0.52399;0.52665;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="60" y="296" width="1160" height="296" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="334.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">서버 kosis.kr</text>
+<rect x="80" y="352" width="1120" height="62" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="100.0" y="392" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="508.4" lengthAdjust="spacingAndGlyphs">/openapi/Param/statisticsParameterData.do</text>
+<text x="660.0" y="392.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">통계 자료 조회 — 7주 코드가 요청한 기능</text>
+<rect x="81" y="353" width="1118" height="60" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.40192;0.40458;0.42377;0.42644;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="76" y="348" width="1128" height="70" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.40085;0.40352;0.42377;0.42644;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="80" y="428" width="1120" height="62" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="100.0" y="468" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="347.2" lengthAdjust="spacingAndGlyphs">/openapi/statisticsSearch.do</text>
+<text x="660.0" y="468.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">통계표 검색</text>
+<rect x="81" y="429" width="1118" height="60" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43177;0.43443;0.45149;0.45416;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="76" y="424" width="1128" height="70" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43070;0.43337;0.45149;0.45416;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="80" y="504" width="1120" height="62" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="100.0" y="544.0" font-size="22" font-weight="normal" text-anchor="start" fill="#1F2A44">서버에 없는 경로</text>
+<text x="660.0" y="544.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">상태 코드 404</text>
+<rect x="81" y="505" width="1118" height="60" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45949;0.46215;0.48134;0.48401;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="76" y="500" width="1128" height="70" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45842;0.46109;0.48134;0.48401;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="48" y="618" width="522" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48934;0.49200;0.51759;0.52026;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">경로 = 서버의 어느 기능에 요청하는가<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.48934;0.49200;1" dur="93.8s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52665;0.52985;0.65565;0.65885;1" dur="93.8s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 주소의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">조건 세 개</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">「이름=값」 하나가 조건 하나 — &amp;로 연결</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">5 / 8</text>
+<rect x="60" y="200" width="1160" height="64" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="69.6" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="99.2" lengthAdjust="spacingAndGlyphs">https://</text>
+<path d="M72.6,270 v6 h93.2 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="168.8" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="99.2" lengthAdjust="spacingAndGlyphs">kosis.kr</text>
+<path d="M171.8,270 v6 h93.2 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="268.0" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="508.4" lengthAdjust="spacingAndGlyphs">/openapi/Param/statisticsParameterData.do</text>
+<path d="M271.0,270 v6 h502.4 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="776.4" y="242" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" fill="#1F2A44" textLength="434.0" lengthAdjust="spacingAndGlyphs">?orgId=101&amp;tblId=DT_1JC1511&amp;prdSe=Y</text>
+<path d="M779.4,270 v6 h428.0 v-6" fill="none" stroke="#1F2A44" stroke-width="1.6"/>
+<rect x="774.4" y="208" width="438.0" height="48" rx="8" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.53092;0.53358;0.65618;0.65885;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="60" y="312" width="370" height="176" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="362" font-family="Consolas, 'Malgun Gothic', monospace" font-size="26" font-weight="bold" fill="#111111" textLength="135.0" lengthAdjust="spacingAndGlyphs">orgId=101</text>
+<text x="80.0" y="408.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">이름 orgId, 값 101</text>
+<text x="80.0" y="454.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">자료를 만든 기관</text>
+<rect x="61" y="313" width="368" height="174" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.53412;0.53678;0.55384;0.55650;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="54" y="306" width="382" height="188" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.53305;0.53571;0.55384;0.55650;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="455" y="312" width="370" height="176" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="475.0" y="362" font-family="Consolas, 'Malgun Gothic', monospace" font-size="26" font-weight="bold" fill="#111111" textLength="240.0" lengthAdjust="spacingAndGlyphs">tblId=DT_1JC1511</text>
+<text x="475.0" y="408.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">이름 tblId, 값 DT_1JC1511</text>
+<text x="475.0" y="454.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">통계표</text>
+<rect x="456" y="313" width="368" height="174" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.56183;0.56450;0.58156;0.58422;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="449" y="306" width="382" height="188" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.56077;0.56343;0.58156;0.58422;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="850" y="312" width="370" height="176" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="870.0" y="362" font-family="Consolas, 'Malgun Gothic', monospace" font-size="26" font-weight="bold" fill="#111111" textLength="105.0" lengthAdjust="spacingAndGlyphs">prdSe=Y</text>
+<text x="870.0" y="408.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">이름 prdSe, 값 Y</text>
+<text x="870.0" y="454.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">주기(Y = 연간)</text>
+<rect x="851" y="313" width="368" height="174" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.58955;0.59222;0.61141;0.61407;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="844" y="306" width="382" height="188" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.58849;0.59115;0.61141;0.61407;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<text x="60.0" y="548.0" font-size="22" font-weight="normal" text-anchor="start" fill="#1F2A44" opacity="0">이름으로 뜻을 확인하고, 값을 바꾸면 응답이 달라짐<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.61620;0.61887;1" dur="93.8s" repeatCount="indefinite"/></text>
+<rect x="48" y="618" width="611" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62154;0.62420;0.64979;0.65245;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">조건 = 이름과 값, 값을 바꾸면 응답이 달라짐<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.62154;0.62420;1" dur="93.8s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.65885;0.66205;0.76866;0.77186;1" dur="93.8s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 주소의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">조건을 적는 두 가지 방식</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">KOSIS는 ? 뒤에 「이름=값」, ECOS는 경로에 순서대로</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">6 / 8</text>
+<rect x="60" y="190" width="1160" height="150" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="230.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">KOSIS — ? 뒤에 「이름=값」</text>
+<text x="80.0" y="276" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="1041.6" lengthAdjust="spacingAndGlyphs">kosis.kr/openapi/Param/statisticsParameterData.do?orgId=101&amp;tblId=DT_1JC1511&amp;prdSe=Y</text>
+<text x="80.0" y="316.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">이름으로 뜻을 확인</text>
+<rect x="60" y="364" width="1160" height="206" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="404.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">ECOS — 경로에 순서대로</text>
+<text x="80.0" y="450" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="1066.4" lengthAdjust="spacingAndGlyphs">ecos.bok.or.kr/api/StatisticSearch/sample/json/kr/1/10/722Y001/Q/2023Q4/2026Q3/0101000</text>
+<text x="80.0" y="490.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">자리의 순서로 뜻을 확인</text>
+<text x="80.0" y="536.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">순서 = 서비스 이름 / 인증키 / 형식 / 언어 / 시작 번호 / 끝 번호 / 통계표 / 주기 / 시작 시점 / 끝 시점 / 항목</text>
+<rect x="61" y="191" width="1158" height="148" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.66631;0.66898;0.69030;0.69296;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="54" y="184" width="1172" height="162" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.66525;0.66791;0.69030;0.69296;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="61" y="365" width="1158" height="204" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.69829;0.70096;0.72655;0.72921;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="54" y="358" width="1172" height="218" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.69723;0.69989;0.72655;0.72921;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="48" y="618" width="748" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.73454;0.73721;0.76279;0.76546;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">조건을 적는 방식은 서버마다 다름 → API 문서에서 확인<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.73454;0.73721;1" dur="93.8s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77186;0.77505;0.90512;0.90832;1" dur="93.8s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 주소의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">값을 바꾼 경우</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6주 코드의 ECOS 주소에서 값 하나를 바꾸면 응답이 달라짐</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">7 / 8</text>
+<rect x="60" y="192" width="1160" height="108" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"/><text x="80.0" y="230.0" font-size="20" font-weight="bold" text-anchor="start" fill="#111111">원래의 주소</text><text x="80.0" y="272" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="310.0" lengthAdjust="spacingAndGlyphs">…/StatisticSearch/sample/</text><text x="390.0" y="272" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="49.6" lengthAdjust="spacingAndGlyphs">json</text><text x="439.6" y="272" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="74.4" lengthAdjust="spacingAndGlyphs">/kr/1/</text><text x="514.0" y="272" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="24.8" lengthAdjust="spacingAndGlyphs">10</text><text x="538.8" y="272" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="148.8" lengthAdjust="spacingAndGlyphs">/722Y001/Q/…</text><text x="730.0" y="272.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">→ 자료 10건, JSON 형식</text>
+<rect x="56" y="188" width="1168" height="116" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77292;0.77559;0.79904;0.80171;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<g opacity="0"><rect x="60" y="316" width="1160" height="108" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"/><text x="80.0" y="354.0" font-size="20" font-weight="bold" text-anchor="start" fill="#111111">① 형식 json → xml</text><text x="80.0" y="396" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="310.0" lengthAdjust="spacingAndGlyphs">…/StatisticSearch/sample/</text><text x="390.0" y="396" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="bold" fill="#C0392B" textLength="37.2" lengthAdjust="spacingAndGlyphs">xml</text><text x="427.2" y="396" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="74.4" lengthAdjust="spacingAndGlyphs">/kr/1/</text><text x="501.6" y="396" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="24.8" lengthAdjust="spacingAndGlyphs">10</text><text x="526.4" y="396" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="148.8" lengthAdjust="spacingAndGlyphs">/722Y001/Q/…</text><text x="730.0" y="396.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">→ 같은 자료가 XML 형식으로 응답</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.80384;0.80650;1" dur="93.8s" repeatCount="indefinite"/></g>
+<rect x="56" y="312" width="1168" height="116" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.80490;0.80757;0.83102;0.83369;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<g opacity="0"><rect x="60" y="440" width="1160" height="108" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"/><text x="80.0" y="478.0" font-size="20" font-weight="bold" text-anchor="start" fill="#111111">② 끝 번호 10 → 12</text><text x="80.0" y="520" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="310.0" lengthAdjust="spacingAndGlyphs">…/StatisticSearch/sample/</text><text x="390.0" y="520" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="49.6" lengthAdjust="spacingAndGlyphs">json</text><text x="439.6" y="520" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="74.4" lengthAdjust="spacingAndGlyphs">/kr/1/</text><text x="514.0" y="520" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="bold" fill="#C0392B" textLength="24.8" lengthAdjust="spacingAndGlyphs">12</text><text x="538.8" y="520" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="normal" fill="#1F2A44" textLength="148.8" lengthAdjust="spacingAndGlyphs">/722Y001/Q/…</text><text x="730.0" y="520.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">→ 오류 응답(공개 키의 한도 초과)</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.83582;0.83849;1" dur="93.8s" repeatCount="indefinite"/></g>
+<rect x="56" y="436" width="1168" height="116" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.83689;0.83955;0.86301;0.86567;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="48" y="618" width="884" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.87100;0.87367;0.89925;0.90192;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">값 하나가 바뀌면 응답이 달라짐 → 주소를 작성하는 줄을 먼저 확인<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.87100;0.87367;1" dur="93.8s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.90832;0.91151;0.99680;1.00000;1" dur="93.8s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 주소의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">localhost — 내 컴퓨터 자신</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">AI가 작성한 프로그램이 localhost 주소를 안내한 경우</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">8 / 8</text>
+<rect x="60" y="196" width="550" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"/><text x="80.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">내 컴퓨터</text><rect x="84" y="292" width="150" height="64" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="159.0" y="332.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">브라우저</text><rect x="360" y="292" width="226" height="64" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="473.0" y="332.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">실행 중인 프로그램</text><line x1="238" y1="324" x2="354" y2="324" stroke="#1F2A44" stroke-width="3.5" marker-end="url(#arw)"/><text x="84.0" y="408" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="bold" fill="#111111" textLength="260.4" lengthAdjust="spacingAndGlyphs">http://localhost:8000</text><text x="84.0" y="456.0" font-size="22" font-weight="normal" text-anchor="start" fill="#1F2A44">localhost = 이 컴퓨터 자신(포트 8000)</text><text x="84.0" y="496.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">프로그램이 실행 중 → 열림</text>
+<rect x="61" y="197" width="548" height="378" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.91578;0.91844;0.93977;0.94243;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<g opacity="0"><rect x="670" y="196" width="550" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"/><text x="690.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">다른 사람의 컴퓨터</text><rect x="694" y="292" width="150" height="64" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"/><text x="769.0" y="332.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">브라우저</text><rect x="970" y="292" width="226" height="64" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2" stroke-dasharray="8,6"/><text x="1083.0" y="332.0" font-size="20" font-weight="normal" text-anchor="middle" fill="#1F2A44">프로그램 없음</text><line x1="848" y1="324" x2="964" y2="324" stroke="#1F2A44" stroke-width="3.5" marker-end="url(#arw)"/><text x="694.0" y="408" font-family="Consolas, 'Malgun Gothic', monospace" font-size="22" font-weight="bold" fill="#111111" textLength="260.4" lengthAdjust="spacingAndGlyphs">http://localhost:8000</text><text x="694.0" y="456.0" font-size="22" font-weight="normal" text-anchor="start" fill="#1F2A44">같은 주소 = 그 컴퓨터 자신을 가리킴</text><text x="694.0" y="496.0" font-size="24" font-weight="bold" text-anchor="start" fill="#C0392B">열리지 않음</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.94670;0.94936;1" dur="93.8s" repeatCount="indefinite"/></g>
+<rect x="664" y="190" width="562" height="392" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.94776;0.95043;0.99733;1.00000;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<rect x="48" y="618" width="750" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.96269;0.96535;0.99094;0.99360;1" dur="93.8s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">localhost 주소 = 내 컴퓨터 안에서 실행 중인 프로그램<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.96269;0.96535;1" dur="93.8s" repeatCount="indefinite"/></text>
+</g>
+<rect x="0" y="714" width="1280" height="6" fill="#EEF1F5"/>
+<rect x="0" y="714" width="0" height="6" fill="#7A8BA6"><animate attributeName="width" values="0;1280" keyTimes="0;1" dur="93.8s" repeatCount="indefinite"/></rect>
+</svg></div>
+<div id="wait">▶ 클릭</div>
+<div id="hint">클릭 · → · Space = 다음 &nbsp; ← = 이전 &nbsp; F = 전체 화면 &nbsp; R = 처음부터</div>
+<script>
+const STOPS = [[1.2, 1.25, "1: 프로토콜"], [4.1, 4.15, "1: 도메인"], [6.5, 6.55, "1: 경로"], [8.9, 8.95, "1: 조건"], [11.25, 13.55, "1: 주소 = 프로토콜, 도메인, 경로, 조건"], [14.05, 14.1, "1: scene end"], [15.4, 15.45, "2: 도메인 = 사람이 읽는 이름"], [19.6, 19.65, "2: DNS가 번호를 알려 줌"], [22.4, 22.45, "2: IP 주소로 요청을 전송"], [23.45, 25.75, "2: 도메인은 사람이 읽는 이름, 전송에는 IP 주소를 사용"], [26.25, 26.3, "2: scene end"], [27.8, 27.85, "3: http"], [30.4, 30.45, "3: https"], [32.6, 32.65, "3: 포트"], [33.85, 36.15, "3: https = 암호화해서 전송, 포트를 생략하면 기본값 443"], [36.65, 36.7, "3: scene end"], [38.2, 38.25, "4: 통계 자료 조회 — 7주 코드가 요청한 기능"], [41.0, 41.05, "4: 통계표 검색"], [43.6, 43.65, "4: 상태 코드 404"], [46.25, 48.55, "4: 경로 = 서버의 어느 기능에 요청하는가"], [49.05, 49.1, "4: scene end"], [50.6, 50.65, "5: 자료를 만든 기관"], [53.2, 53.25, "5: 통계표"], [55.8, 55.85, "5: 주기(Y = 연간)"], [58.65, 60.95, "5: 조건 = 이름과 값, 값을 바꾸면 응답이 달라짐"], [61.45, 61.5, "5: scene end"], [63.0, 63.05, "6: KOSIS"], [66.0, 66.05, "6: ECOS"], [69.25, 71.55, "6: 조건을 적는 방식은 서버마다 다름 → API 문서에서 확인"], [72.05, 72.1, "6: scene end"], [73.2, 73.25, "7: 원래의 주소"], [76.2, 76.25, "7: ① 형식 json → xml"], [79.2, 79.25, "7: ② 끝 번호 10 → 12"], [82.05, 84.35, "7: 값 하나가 바뀌면 응답이 달라짐 → 주소를 작성하는 줄을 먼저 확인"], [84.85, 84.9, "7: scene end"], [86.4, 86.45, "8: localhost = 내 컴퓨터 자신"], [89.4, 89.45, "8: 다른 컴퓨터에서는 열리지 않음"], [90.65, 92.95, "8: localhost 주소 = 내 컴퓨터 안에서 실행 중인 프로그램"], [93.45, 0.0, "8: scene end"]];            // [stop, resume, label] in seconds of the SVG timeline
+const AUTOSTART = false;    // false = show the start cover and hold until the first click (motion guide 2026-10-13)
+const svg = document.querySelector('#stage svg');
+const wait = document.getElementById('wait');
+const cover = document.getElementById('cover');
+let i = 0, waiting = false, started = AUTOSTART;
+
+function holdStart() {
+  i = 0; waiting = false; started = false;
+  svg.pauseAnimations(); svg.setCurrentTime(0);
+  wait.classList.remove('on'); cover.classList.add('on');
+}
+function waitAt(k) {
+  i = k; waiting = true;
+  svg.pauseAnimations(); svg.setCurrentTime(STOPS[k][0]);
+  wait.classList.add('on');
+}
+function next() {
+  if (!started) { started = true; cover.classList.remove('on'); svg.unpauseAnimations(); return; }
+  if (!waiting) { waitAt(i); return; }          // playing: jump to the next stop at once
+  const resume = STOPS[i][1];
+  waiting = false; wait.classList.remove('on');
+  i = (i + 1) % STOPS.length;
+  svg.setCurrentTime(resume); svg.unpauseAnimations();
+}
+function prev() { if (started) waitAt(Math.max(0, i - 1)); }
+function restart() {
+  if (!AUTOSTART) { holdStart(); return; }
+  i = 0; waiting = false; wait.classList.remove('on'); svg.setCurrentTime(0); svg.unpauseAnimations();
+}
+function tick() {
+  if (started && !waiting && svg.getCurrentTime() >= STOPS[i][0]) waitAt(i);
+  requestAnimationFrame(tick);
+}
+document.addEventListener('click', next);
+document.addEventListener('keydown', e => {
+  if (['ArrowRight', ' ', 'Enter', 'PageDown'].includes(e.key)) { e.preventDefault(); next(); }
+  else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); prev(); }
+  else if (e.key === 'f' || e.key === 'F') {
+    if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen();
+  }
+  else if (e.key === 'r' || e.key === 'R') restart();
+});
+setTimeout(() => { document.getElementById('hint').style.opacity = 0; }, 6000);
+if (AUTOSTART) { svg.setCurrentTime(0); svg.unpauseAnimations(); } else { holdStart(); }
+requestAnimationFrame(tick);
+</script></body></html>

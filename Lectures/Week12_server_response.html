@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>서버의 확인과 응답</title>
+<style>
+html,body{margin:0;height:100%;background:#fff;overflow:hidden;cursor:pointer;
+  font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage svg{width:100vw;height:100vh}
+#wait{position:fixed;right:22px;bottom:22px;padding:6px 14px;border-radius:16px;background:#1F2A44;color:#fff;
+  font-size:15px;font-weight:bold;opacity:0;transition:opacity .2s}
+#wait.on{opacity:.85;animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+#hint{position:fixed;left:22px;bottom:22px;font-size:13px;color:#8A94A6;transition:opacity 1s}
+#cover{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+  background:#FFFFFF;z-index:5}
+#cover.on{display:flex}
+#cover .t{font-size:34px;font-weight:bold;color:#111111}
+#cover .s{font-size:20px;color:#44506A}
+#cover .b{padding:10px 26px;border-radius:24px;background:#1F2A44;color:#FFFFFF;font-size:24px;font-weight:bold}
+</style></head><body>
+<div id="cover"><div class="t">서버의 확인과 응답</div><div class="s">12주 2.5 — 요청을 받은 서버가 확인하는 것과 응답의 구성</div><div class="b">▶ 클릭하면 시작</div></div>
+<div id="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A44"/></marker><marker id="arwT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4A7D7C"/></marker></defs>
+<rect width="1280" height="720" fill="#FFFFFF"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.00000;0.00380;0.13797;0.14177;1" dur="79.0s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 응답의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">요청이 서버에 도착</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">서버는 요청을 확인한 뒤 처리하고, 결과를 상태 코드로 알림</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">1 / 8</text>
+<rect x="60" y="196" width="270" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">요청</text>
+<text x="78.0" y="288.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">GET</text>
+<text x="78.0" y="322.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">ECOS의 통계 조회 주소</text>
+<text x="78.0" y="356.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">조건은 주소에 포함</text>
+<rect x="370" y="196" width="510" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="388.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">서버의 확인</text>
+<text x="862.0" y="238.0" font-size="20" font-weight="normal" text-anchor="end" fill="#44506A">순서는 서버마다 다름</text>
+<rect x="390" y="262" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="301.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">① 주소 확인</text>
+<rect x="390" y="338" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="377.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">② 인증과 권한 확인</text>
+<rect x="390" y="414" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="453.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">③ 횟수와 조건 확인</text>
+<rect x="390" y="490" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="529.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">④ 처리</text>
+<rect x="920" y="196" width="300" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="938.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">응답</text>
+<path d="M330,386 L370,386" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<path d="M880,386 L920,386" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M330,386 L370,386" keyPoints="0;0;1;1" keyTimes="0;0.00759;0.02278;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.00570;0.00759;0.02532;0.02722;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<rect x="387" y="259" width="476" height="66" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.02785;0.03101;0.03481;0.03797;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="387" y="335" width="476" height="66" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.03924;0.04241;0.04620;0.04937;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="387" y="411" width="476" height="66" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05063;0.05380;0.05759;0.06076;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="387" y="487" width="476" height="66" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.06203;0.06519;0.06899;0.07215;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<g opacity="0"><text x="938.0" y="300.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">상태 코드</text><text x="938.0" y="334.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">세 자리 숫자</text><text x="938.0" y="396.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">헤더</text><text x="938.0" y="430.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">본문의 형식</text><text x="938.0" y="492.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">본문</text><text x="938.0" y="526.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">자료 또는 안내</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.08101;0.08418;1" dur="79.0s" repeatCount="indefinite"/></g>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M880,386 L920,386" keyPoints="0;0;1;1" keyTimes="0;0.07848;0.09114;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.07658;0.07848;0.09367;0.09557;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<rect x="48" y="618" width="671" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.09747;0.10063;0.13101;0.13418;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">서버는 요청을 확인하고, 결과를 상태 코드로 알림<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.09747;0.10063;1" dur="79.0s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.14177;0.14557;0.23924;0.24304;1" dur="79.0s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 응답의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">① 주소 확인</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">서버에 없는 주소를 요청한 경우</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">2 / 8</text>
+<rect x="60" y="196" width="270" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">요청</text>
+<text x="78.0" y="288.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">GET</text>
+<text x="78.0" y="322.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">ECOS의 통계 조회 주소</text>
+<text x="78.0" y="356.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">조건은 주소에 포함</text>
+<rect x="370" y="196" width="510" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="388.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">서버의 확인</text>
+<text x="862.0" y="238.0" font-size="20" font-weight="normal" text-anchor="end" fill="#44506A">순서는 서버마다 다름</text>
+<rect x="390" y="262" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="301.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">① 주소 확인</text>
+<rect x="390" y="338" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="377.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">② 인증과 권한 확인</text>
+<rect x="390" y="414" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="453.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">③ 횟수와 조건 확인</text>
+<rect x="390" y="490" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="529.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">④ 처리</text>
+<rect x="920" y="196" width="300" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="938.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">응답</text>
+<path d="M330,386 L370,386" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<path d="M880,386 L920,386" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M330,386 L370,386 L390,292" keyPoints="0;0;1;1" keyTimes="0;0.14937;0.16456;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.14747;0.14937;0.16709;0.16899;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<rect x="391" y="263" width="468" height="58" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16456;0.16772;0.23987;0.24304;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="387" y="259" width="476" height="66" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.16456;0.16772;0.23987;0.24304;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<g opacity="0"><text x="938.0" y="302" font-family="Consolas, 'Malgun Gothic', monospace" font-size="36" font-weight="bold" fill="#C0392B" textLength="63.0" lengthAdjust="spacingAndGlyphs">404</text><text x="938.0" y="340.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">요청한 자료를</text><text x="938.0" y="368.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">찾을 수 없음</text><text x="938.0" y="402.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">문제 = 주소</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.17722;0.18038;1" dur="79.0s" repeatCount="indefinite"/></g>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M860,292 L920,292" keyPoints="0;0;1;1" keyTimes="0;0.17722;0.18987;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.17532;0.17722;0.19241;0.19430;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<rect x="48" y="618" width="467" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19873;0.20190;0.23228;0.23544;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">404 = 주소의 문제 → 주소를 수정<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.19873;0.20190;1" dur="79.0s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24304;0.24684;0.34051;0.34430;1" dur="79.0s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 응답의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">② 인증과 권한 확인</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">로그인이나 인증키가 없거나, 권한이 없는 경우</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">3 / 8</text>
+<rect x="60" y="196" width="270" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">요청</text>
+<text x="78.0" y="288.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">GET</text>
+<text x="78.0" y="322.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">ECOS의 통계 조회 주소</text>
+<text x="78.0" y="356.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">조건은 주소에 포함</text>
+<rect x="370" y="196" width="510" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="388.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">서버의 확인</text>
+<text x="862.0" y="238.0" font-size="20" font-weight="normal" text-anchor="end" fill="#44506A">순서는 서버마다 다름</text>
+<rect x="390" y="262" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="301.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">① 주소 확인</text>
+<rect x="390" y="338" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="377.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">② 인증과 권한 확인</text>
+<rect x="390" y="414" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="453.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">③ 횟수와 조건 확인</text>
+<rect x="390" y="490" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="529.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">④ 처리</text>
+<rect x="920" y="196" width="300" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="938.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">응답</text>
+<path d="M330,386 L370,386" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<path d="M880,386 L920,386" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M330,386 L370,386 L390,368" keyPoints="0;0;1;1" keyTimes="0;0.25063;0.26582;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24873;0.25063;0.26835;0.27025;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<rect x="391" y="339" width="468" height="58" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26582;0.26899;0.34114;0.34430;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="387" y="335" width="476" height="66" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26582;0.26899;0.34114;0.34430;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<g opacity="0"><text x="938.0" y="302" font-family="Consolas, 'Malgun Gothic', monospace" font-size="36" font-weight="bold" fill="#C0392B" textLength="63.0" lengthAdjust="spacingAndGlyphs">401</text><text x="938.0" y="340.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">인증이 필요함</text><text x="938.0" y="374.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">문제 = 로그인, 인증키</text><text x="938.0" y="462" font-family="Consolas, 'Malgun Gothic', monospace" font-size="36" font-weight="bold" fill="#C0392B" textLength="63.0" lengthAdjust="spacingAndGlyphs">403</text><text x="938.0" y="500.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">접근 권한이 없음</text><text x="938.0" y="534.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">문제 = 권한</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.27848;0.28165;1" dur="79.0s" repeatCount="indefinite"/></g>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M860,368 L920,368" keyPoints="0;0;1;1" keyTimes="0;0.27848;0.29114;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.27658;0.27848;0.29367;0.29557;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<rect x="48" y="618" width="437" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.30000;0.30316;0.33354;0.33671;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">401 = 인증, 403 = 권한의 문제<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.30000;0.30316;1" dur="79.0s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.34430;0.34810;0.44177;0.44557;1" dur="79.0s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 응답의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">③ 횟수와 조건 확인</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">요청이 너무 잦거나, 요청의 형식이 잘못된 경우</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">4 / 8</text>
+<rect x="60" y="196" width="270" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">요청</text>
+<text x="78.0" y="288.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">GET</text>
+<text x="78.0" y="322.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">ECOS의 통계 조회 주소</text>
+<text x="78.0" y="356.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">조건은 주소에 포함</text>
+<rect x="370" y="196" width="510" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="388.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">서버의 확인</text>
+<text x="862.0" y="238.0" font-size="20" font-weight="normal" text-anchor="end" fill="#44506A">순서는 서버마다 다름</text>
+<rect x="390" y="262" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="301.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">① 주소 확인</text>
+<rect x="390" y="338" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="377.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">② 인증과 권한 확인</text>
+<rect x="390" y="414" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="453.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">③ 횟수와 조건 확인</text>
+<rect x="390" y="490" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="529.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">④ 처리</text>
+<rect x="920" y="196" width="300" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="938.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">응답</text>
+<path d="M330,386 L370,386" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<path d="M880,386 L920,386" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M330,386 L370,386 L390,444" keyPoints="0;0;1;1" keyTimes="0;0.35190;0.36709;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.35000;0.35190;0.36962;0.37152;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<rect x="391" y="415" width="468" height="58" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.36709;0.37025;0.44241;0.44557;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="387" y="411" width="476" height="66" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.36709;0.37025;0.44241;0.44557;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<g opacity="0"><text x="938.0" y="302" font-family="Consolas, 'Malgun Gothic', monospace" font-size="36" font-weight="bold" fill="#C0392B" textLength="63.0" lengthAdjust="spacingAndGlyphs">429</text><text x="938.0" y="340.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">정해진 시간 안에</text><text x="938.0" y="368.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">요청을 너무 많이 보냄</text><text x="938.0" y="402.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">문제 = 횟수</text><text x="938.0" y="462" font-family="Consolas, 'Malgun Gothic', monospace" font-size="36" font-weight="bold" fill="#C0392B" textLength="63.0" lengthAdjust="spacingAndGlyphs">400</text><text x="938.0" y="500.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">요청의 형식이 잘못됨</text><text x="938.0" y="534.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">문제 = 주소, 조건</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.37975;0.38291;1" dur="79.0s" repeatCount="indefinite"/></g>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M860,444 L920,444" keyPoints="0;0;1;1" keyTimes="0;0.37975;0.39241;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.37785;0.37975;0.39494;0.39684;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<rect x="48" y="618" width="527" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.40127;0.40443;0.43481;0.43797;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">4로 시작 = 요청의 문제 → 요청을 수정<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.40127;0.40443;1" dur="79.0s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.44557;0.44937;0.54304;0.54684;1" dur="79.0s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 응답의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">④ 처리와 응답</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">확인을 통과한 요청은 처리되어 결과가 응답으로 전달</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">5 / 8</text>
+<rect x="60" y="196" width="270" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">요청</text>
+<text x="78.0" y="288.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">GET</text>
+<text x="78.0" y="322.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">ECOS의 통계 조회 주소</text>
+<text x="78.0" y="356.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">조건은 주소에 포함</text>
+<rect x="370" y="196" width="510" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="388.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">서버의 확인</text>
+<text x="862.0" y="238.0" font-size="20" font-weight="normal" text-anchor="end" fill="#44506A">순서는 서버마다 다름</text>
+<rect x="390" y="262" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="301.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">① 주소 확인</text>
+<rect x="390" y="338" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="377.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">② 인증과 권한 확인</text>
+<rect x="390" y="414" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="453.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">③ 횟수와 조건 확인</text>
+<rect x="390" y="490" width="470" height="60" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="408.0" y="529.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">④ 처리</text>
+<rect x="920" y="196" width="300" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="938.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">응답</text>
+<path d="M330,386 L370,386" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<path d="M880,386 L920,386" fill="none" stroke="#7A8BA6" stroke-width="2.5" stroke-dasharray="5,5"/>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M330,386 L370,386 L390,520" keyPoints="0;0;1;1" keyTimes="0;0.45316;0.46835;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45127;0.45316;0.47089;0.47278;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<rect x="391" y="491" width="468" height="58" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.46835;0.47152;0.54367;0.54684;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="387" y="487" width="476" height="66" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.46835;0.47152;0.54367;0.54684;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<g opacity="0"><text x="938.0" y="302" font-family="Consolas, 'Malgun Gothic', monospace" font-size="36" font-weight="bold" fill="#C0392B" textLength="63.0" lengthAdjust="spacingAndGlyphs">200</text><text x="938.0" y="340.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">요청을 처리해</text><text x="938.0" y="368.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">결과를 보냄</text><text x="938.0" y="402.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">문제 없음</text><text x="938.0" y="462.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">헤더 = application/json</text><text x="938.0" y="490.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">본문 = JSON(자료 10건)</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.48101;0.48418;1" dur="79.0s" repeatCount="indefinite"/></g>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M860,520 L920,520" keyPoints="0;0;1;1" keyTimes="0;0.48101;0.49367;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.47911;0.48101;0.49620;0.49810;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<rect x="48" y="618" width="645" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.50253;0.50570;0.53608;0.53924;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">첫 자리 = 2 성공, 4 요청의 문제, 5 서버의 문제<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.50253;0.50570;1" dur="79.0s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.54684;0.55063;0.72025;0.72405;1" dur="79.0s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 응답의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">JSON에서 값 찾기</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">6주 코드가 받은 ECOS 응답의 본문(일부)</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">6 / 8</text>
+<rect x="60" y="196" width="700" height="380" rx="8" fill="#FFFFFF" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="84.0" y="252" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="231.0" lengthAdjust="spacingAndGlyphs">{&quot;StatisticSearch&quot;: {</text>
+<text x="128.0" y="296" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="253.0" lengthAdjust="spacingAndGlyphs">&quot;list_total_count&quot;: 12,</text>
+<text x="128.0" y="340" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="88.0" lengthAdjust="spacingAndGlyphs">&quot;row&quot;: [</text>
+<text x="150.0" y="384" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="583.0" lengthAdjust="spacingAndGlyphs">{&quot;ITEM_NAME1&quot;: &quot;한국은행 기준금리&quot;, &quot;TIME&quot;: &quot;2023Q4&quot;,</text>
+<text x="161.0" y="428" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="440.0" lengthAdjust="spacingAndGlyphs">&quot;DATA_VALUE&quot;: &quot;3.5&quot;, &quot;UNIT_NAME&quot;: &quot;연%&quot;}</text>
+<text x="128.0" y="472" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="11.0" lengthAdjust="spacingAndGlyphs">]</text>
+<text x="84.0" y="516" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" fill="#1F2A44" textLength="22.0" lengthAdjust="spacingAndGlyphs">}}</text>
+<rect x="800" y="200" width="420" height="78" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="818.0" y="232.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">StatisticSearch</text>
+<text x="818.0" y="262.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">응답 전체를 감싸는 묶음 { }</text>
+<rect x="801" y="201" width="418" height="76" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.55570;0.55886;0.57658;0.57975;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="72" y="224" width="676" height="40" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.55443;0.55759;0.57658;0.57975;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="800" y="292" width="420" height="78" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="818.0" y="324.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">row</text>
+<text x="818.0" y="354.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">항목이 여러 개인 목록 [ ]</text>
+<rect x="801" y="293" width="418" height="76" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.58608;0.58924;0.60696;0.61013;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="72" y="312" width="676" height="40" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.58481;0.58797;0.60696;0.61013;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="800" y="384" width="420" height="78" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="818.0" y="416.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">항목 하나</text>
+<text x="818.0" y="446.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">분기 하나의 값 { }</text>
+<rect x="801" y="385" width="418" height="76" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.61646;0.61962;0.63734;0.64051;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="72" y="356" width="676" height="84" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.61519;0.61835;0.63734;0.64051;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="800" y="476" width="420" height="78" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="818.0" y="508.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">DATA_VALUE</text>
+<text x="818.0" y="538.0" font-size="20" font-weight="normal" text-anchor="start" fill="#1F2A44">값 = 3.5(연%)</text>
+<rect x="801" y="477" width="418" height="76" rx="7" fill="#DCEBFF" opacity="0" style="mix-blend-mode:multiply"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.64684;0.65000;0.67025;0.67342;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="72" y="400" width="676" height="40" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.64557;0.64873;0.67025;0.67342;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="48" y="618" width="907" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.67975;0.68291;0.71329;0.71646;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">값을 찾는 경로 = StatisticSearch → row → 항목 → DATA_VALUE<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.67975;0.68291;1" dur="79.0s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.72405;0.72785;0.86962;0.87342;1" dur="79.0s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 응답의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">목록의 항목이 표의 행으로</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">row 목록의 항목 하나가 분기 하나의 값</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">7 / 8</text>
+<rect x="60" y="196" width="590" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="78.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">응답의 row 목록(12개 가운데 4개)</text>
+<rect x="760" y="196" width="460" height="380" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="778.0" y="238.0" font-size="24" font-weight="bold" text-anchor="start" fill="#111111">표</text>
+<text x="800.0" y="288.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">분기</text>
+<text x="1000.0" y="288.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">기준금리(연%)</text>
+<line x1="784" y1="302" x2="1196" y2="302" stroke="#1F2A44" stroke-width="1.6"/>
+<text x="84.0" y="346" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" font-weight="normal" fill="#1F2A44" textLength="452.4" lengthAdjust="spacingAndGlyphs">{&quot;TIME&quot;: &quot;2023Q4&quot;, &quot;DATA_VALUE&quot;: &quot;3.5&quot;}</text>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M642,340 L784,340" keyPoints="0;0;1;1" keyTimes="0;0.73418;0.74684;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.73228;0.73418;0.74937;0.75127;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<g opacity="0"><text x="800.0" y="346.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">2023Q4</text><text x="1000.0" y="346.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">3.5</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.74684;0.75000;1" dur="79.0s" repeatCount="indefinite"/></g>
+<text x="84.0" y="408" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" font-weight="normal" fill="#1F2A44" textLength="429.2" lengthAdjust="spacingAndGlyphs">{&quot;TIME&quot;: &quot;2024Q4&quot;, &quot;DATA_VALUE&quot;: &quot;3&quot;}</text>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M642,402 L784,402" keyPoints="0;0;1;1" keyTimes="0;0.75570;0.76835;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.75380;0.75570;0.77089;0.77278;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<g opacity="0"><text x="800.0" y="408.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">2024Q4</text><text x="1000.0" y="408.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">3</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.76835;0.77152;1" dur="79.0s" repeatCount="indefinite"/></g>
+<text x="84.0" y="470" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" font-weight="normal" fill="#1F2A44" textLength="464.0" lengthAdjust="spacingAndGlyphs">{&quot;TIME&quot;: &quot;2025Q1&quot;, &quot;DATA_VALUE&quot;: &quot;2.75&quot;}</text>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M642,464 L784,464" keyPoints="0;0;1;1" keyTimes="0;0.77722;0.78987;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77532;0.77722;0.79241;0.79430;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<g opacity="0"><text x="800.0" y="470.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">2025Q1</text><text x="1000.0" y="470.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">2.75</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.78987;0.79304;1" dur="79.0s" repeatCount="indefinite"/></g>
+<text x="84.0" y="532" font-family="Consolas, 'Malgun Gothic', monospace" font-size="20" font-weight="normal" fill="#1F2A44" textLength="429.2" lengthAdjust="spacingAndGlyphs">{&quot;TIME&quot;: &quot;2026Q3&quot;, &quot;DATA_VALUE&quot;: &quot;3&quot;}</text>
+<circle cx="0" cy="0" r="8" fill="#1F2A44" opacity="0"><animateMotion path="M642,526 L784,526" keyPoints="0;0;1;1" keyTimes="0;0.79873;0.81139;1" calcMode="linear" dur="79.0s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79684;0.79873;0.81392;0.81582;1" dur="79.0s" repeatCount="indefinite"/></circle>
+<g opacity="0"><text x="800.0" y="532.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">2026Q3</text><text x="1000.0" y="532.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">3</text><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.81139;0.81456;1" dur="79.0s" repeatCount="indefinite"/></g>
+<rect x="48" y="618" width="447" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.82911;0.83228;0.86266;0.86582;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">목록의 항목 하나 = 표의 행 하나<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.82911;0.83228;1" dur="79.0s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.87342;0.87722;0.99620;1.00000;1" dur="79.0s" repeatCount="indefinite"/>
+<rect x="60" y="30" width="168" height="34" rx="17" fill="#1F2A44"/>
+<text x="144.0" y="53.0" font-size="17" font-weight="bold" text-anchor="middle" fill="#FFFFFF">12주 응답의 구성</text>
+<text x="60.0" y="106.0" font-size="34" font-weight="bold" text-anchor="start" fill="#111111">상태 코드가 200이어도 본문을 확인</text>
+<text x="60.0" y="142.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">ECOS 공개 키로 끝 번호만 바꾸어 보낸 두 요청</text>
+<text x="1220.0" y="52.0" font-size="15" font-weight="normal" text-anchor="end" fill="#7A8BA6">8 / 8</text>
+<text x="80.0" y="212.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">요청</text>
+<text x="560.0" y="212.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">상태 코드</text>
+<text x="760.0" y="212.0" font-size="20" font-weight="normal" text-anchor="start" fill="#44506A">본문</text>
+<rect x="60" y="230" width="1160" height="104" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="292.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">ECOS 공개 키로 1~10번 요청</text>
+<text x="560.0" y="294" font-family="Consolas, 'Malgun Gothic', monospace" font-size="34" font-weight="bold" fill="#111111" textLength="60.0" lengthAdjust="spacingAndGlyphs">200</text>
+<text x="760.0" y="292.0" font-size="24" font-weight="bold" text-anchor="start" fill="#1F2A44">기준금리 자료 10건</text>
+<rect x="56" y="226" width="1168" height="112" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.88101;0.88418;0.90823;0.91139;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<rect x="60" y="360" width="1160" height="104" rx="8" fill="#F4F7FB" stroke="#1F2A44" stroke-width="2"></rect>
+<text x="80.0" y="422.0" font-size="24" font-weight="normal" text-anchor="start" fill="#1F2A44">ECOS 공개 키로 1~12번 요청</text>
+<text x="560.0" y="424" font-family="Consolas, 'Malgun Gothic', monospace" font-size="34" font-weight="bold" fill="#111111" textLength="60.0" lengthAdjust="spacingAndGlyphs">200</text>
+<text x="760.0" y="422.0" font-size="24" font-weight="bold" text-anchor="start" fill="#C0392B">ERROR-301(공개 키는 10건까지)</text>
+<rect x="56" y="356" width="1168" height="112" rx="10" fill="none" stroke="#C0392B" stroke-width="4" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.91646;0.91962;0.99684;1.00000;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<text x="60.0" y="536.0" font-size="22" font-weight="normal" text-anchor="start" fill="#1F2A44" opacity="0">상태 코드 200 = 서버가 응답을 보냈다는 뜻이며, 원하는 자료를 받았다는 뜻이 아님<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.94430;0.94747;1" dur="79.0s" repeatCount="indefinite"/></text>
+<rect x="48" y="618" width="490" height="44" rx="8" fill="#FDECEC" stroke="#C0392B" stroke-width="2.5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.95570;0.95886;0.98924;0.99241;1" dur="79.0s" repeatCount="indefinite"/></rect>
+<text x="64.0" y="650.0" font-size="28" font-weight="bold" text-anchor="start" fill="#C0392B" opacity="0">상태 코드가 200이어도 본문을 확인<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.95570;0.95886;1" dur="79.0s" repeatCount="indefinite"/></text>
+</g>
+<rect x="0" y="714" width="1280" height="6" fill="#EEF1F5"/>
+<rect x="0" y="714" width="0" height="6" fill="#7A8BA6"><animate attributeName="width" values="0;1280" keyTimes="0;1" dur="79.0s" repeatCount="indefinite"/></rect>
+</svg></div>
+<div id="wait">▶ 클릭</div>
+<div id="hint">클릭 · → · Space = 다음 &nbsp; ← = 이전 &nbsp; F = 전체 화면 &nbsp; R = 처음부터</div>
+<script>
+const STOPS = [[1.0, 1.05, "1: 요청"], [5.8, 5.85, "1: 확인 지점 네 곳"], [8.05, 10.35, "1: 서버는 요청을 확인하고, 결과를 상태 코드로 알림"], [10.85, 10.9, "1: scene end"], [13.4, 13.45, "2: ① 주소 확인"], [14.6, 14.65, "2: 404"], [16.05, 18.35, "2: 404 = 주소의 문제 → 주소를 수정"], [18.85, 18.9, "2: scene end"], [21.4, 21.45, "3: ② 인증과 권한 확인"], [22.6, 22.65, "3: 401, 403"], [24.05, 26.35, "3: 401 = 인증, 403 = 권한의 문제"], [26.85, 26.9, "3: scene end"], [29.4, 29.45, "4: ③ 횟수와 조건 확인"], [30.6, 30.65, "4: 429, 400"], [32.05, 34.35, "4: 4로 시작 = 요청의 문제 → 요청을 수정"], [34.85, 34.9, "4: scene end"], [37.4, 37.45, "5: ④ 처리"], [38.6, 38.65, "5: 200"], [40.05, 42.35, "5: 첫 자리 = 2 성공, 4 요청의 문제, 5 서버의 문제"], [42.85, 42.9, "5: scene end"], [44.4, 44.45, "6: StatisticSearch"], [46.8, 46.85, "6: row"], [49.2, 49.25, "6: 항목 하나"], [51.6, 51.65, "6: DATA_VALUE"], [54.05, 56.35, "6: 값을 찾는 경로 = StatisticSearch → row → 항목 → DATA_VALUE"], [56.85, 56.9, "6: scene end"], [59.6, 59.65, "7: 항목 하나 = 행 하나"], [64.8, 64.85, "7: 표 완성"], [65.85, 68.15, "7: 목록의 항목 하나 = 표의 행 하나"], [68.65, 68.7, "7: scene end"], [70.2, 70.25, "8: ECOS 공개 키로 1~10번 요청"], [73.0, 73.05, "8: ECOS 공개 키로 1~12번 요청"], [75.85, 78.15, "8: 상태 코드가 200이어도 본문을 확인"], [78.65, 0.0, "8: scene end"]];            // [stop, resume, label] in seconds of the SVG timeline
+const AUTOSTART = false;    // false = show the start cover and hold until the first click (motion guide 2026-10-13)
+const svg = document.querySelector('#stage svg');
+const wait = document.getElementById('wait');
+const cover = document.getElementById('cover');
+let i = 0, waiting = false, started = AUTOSTART;
+
+function holdStart() {
+  i = 0; waiting = false; started = false;
+  svg.pauseAnimations(); svg.setCurrentTime(0);
+  wait.classList.remove('on'); cover.classList.add('on');
+}
+function waitAt(k) {
+  i = k; waiting = true;
+  svg.pauseAnimations(); svg.setCurrentTime(STOPS[k][0]);
+  wait.classList.add('on');
+}
+function next() {
+  if (!started) { started = true; cover.classList.remove('on'); svg.unpauseAnimations(); return; }
+  if (!waiting) { waitAt(i); return; }          // playing: jump to the next stop at once
+  const resume = STOPS[i][1];
+  waiting = false; wait.classList.remove('on');
+  i = (i + 1) % STOPS.length;
+  svg.setCurrentTime(resume); svg.unpauseAnimations();
+}
+function prev() { if (started) waitAt(Math.max(0, i - 1)); }
+function restart() {
+  if (!AUTOSTART) { holdStart(); return; }
+  i = 0; waiting = false; wait.classList.remove('on'); svg.setCurrentTime(0); svg.unpauseAnimations();
+}
+function tick() {
+  if (started && !waiting && svg.getCurrentTime() >= STOPS[i][0]) waitAt(i);
+  requestAnimationFrame(tick);
+}
+document.addEventListener('click', next);
+document.addEventListener('keydown', e => {
+  if (['ArrowRight', ' ', 'Enter', 'PageDown'].includes(e.key)) { e.preventDefault(); next(); }
+  else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); prev(); }
+  else if (e.key === 'f' || e.key === 'F') {
+    if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen();
+  }
+  else if (e.key === 'r' || e.key === 'R') restart();
+});
+setTimeout(() => { document.getElementById('hint').style.opacity = 0; }, 6000);
+if (AUTOSTART) { svg.setCurrentTime(0); svg.unpauseAnimations(); } else { holdStart(); }
+requestAnimationFrame(tick);
+</script></body></html>
