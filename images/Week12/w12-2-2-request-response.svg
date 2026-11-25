@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" role="img" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"><title>요청과 응답</title><desc>내 컴퓨터의 브라우저에서 입력한 글과 파일이 요청으로 서버에 전송된다. 서버가 스킬의 지침, 추가한 파일, 입력한 글로 답을 생성해 응답으로 보내고, 브라우저가 그 답을 화면에 표시한다.</desc><defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#2EA7E0" stroke-width="1.5"/></marker></defs><rect width="680" height="300" fill="#FFFFFF"/>
+<rect x="20" y="30" width="210" height="210" rx="8" fill="#F0F2F5" stroke="#485A64" stroke-width="0.75"/>
+<rect x="450" y="30" width="210" height="210" rx="8" fill="#E8F5FC" stroke="#0086CD" stroke-width="1"/>
+<g font-size="14" font-weight="700" fill="#006199" text-anchor="middle"><text x="125" y="56">내 컴퓨터 (브라우저)</text><text x="555" y="56">서버</text></g>
+<g fill="#FFFFFF" stroke="#485A64" stroke-width="0.75"><rect x="36" y="74" width="178" height="62" rx="6"/><rect x="36" y="160" width="178" height="62" rx="6"/></g>
+<rect x="466" y="74" width="178" height="148" rx="6" fill="#FFFFFF" stroke="#0086CD" stroke-width="0.75"/>
+<g font-size="12.5" font-weight="700" fill="#006199" text-anchor="middle"><text x="125" y="98">① 입력</text><text x="125" y="184">⑤ 표시</text><text x="555" y="98">③ 처리</text><text x="340" y="96">② 요청</text><text x="340" y="182">④ 응답</text></g>
+<g font-size="11.5" fill="#485A64" text-anchor="middle"><text x="125" y="120">글, 스킬 선택, 파일 추가</text><text x="125" y="206">받은 답을 화면에 표시</text><text x="555" y="124">스킬의 지침</text><text x="555" y="144">+ 추가한 파일</text><text x="555" y="164">+ 입력한 글</text><text x="555" y="196" font-weight="700" fill="#006199">→ 답 생성</text><text x="340" y="126">입력한 글과 파일</text><text x="340" y="212">생성된 답</text><text x="340" y="154" fill="#2EA7E0">인터넷</text></g>
+<g stroke="#2EA7E0" stroke-width="1.75" fill="none"><line x1="238" y1="106" x2="442" y2="106" marker-end="url(#a1)"/><line x1="442" y1="192" x2="238" y2="192" marker-end="url(#a1)"/></g>
+<text x="340" y="274" font-size="12.5" fill="#485A64" text-anchor="middle">내 컴퓨터 = 보내고 표시하는 일 / 답을 만드는 계산 = 서버</text>
+</svg>

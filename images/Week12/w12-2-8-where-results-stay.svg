@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 310" role="img" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif"><title>결과가 남는 곳</title><desc>스킬과 대화 기록은 계정에 연결되어 서버에 남는다. 답변의 글과 표는 브라우저 화면에 표시되며, 복사하거나 내려받아 저장한 것만 내 컴퓨터에 남는다. 보고서 원본은 내 컴퓨터에 있다.</desc><defs><marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#2EA7E0" stroke-width="1.5"/></marker></defs><rect width="680" height="310" fill="#FFFFFF"/>
+<rect x="20" y="30" width="200" height="220" rx="8" fill="#E8F5FC" stroke="#0086CD" stroke-width="1"/>
+<rect x="240" y="30" width="200" height="220" rx="8" fill="#FFFFFF" stroke="#485A64" stroke-width="0.75" stroke-dasharray="5 4"/>
+<rect x="460" y="30" width="200" height="220" rx="8" fill="#F0F2F5" stroke="#485A64" stroke-width="0.75"/>
+<g font-size="14" font-weight="700" fill="#006199" text-anchor="middle"><text x="120" y="56">서버 (내 계정)</text><text x="340" y="56">브라우저 화면</text><text x="560" y="56">내 컴퓨터</text></g>
+<g fill="#FFFFFF" stroke="#0086CD" stroke-width="0.75"><rect x="34" y="74" width="172" height="62" rx="6"/><rect x="34" y="156" width="172" height="62" rx="6"/></g>
+<rect x="254" y="74" width="172" height="62" rx="6" fill="#F0F2F5" stroke="#485A64" stroke-width="0.75"/>
+<g fill="#FFFFFF" stroke="#485A64" stroke-width="0.75"><rect x="474" y="74" width="172" height="62" rx="6"/><rect x="474" y="156" width="172" height="62" rx="6"/></g>
+<g font-size="12.5" font-weight="700" fill="#006199" text-anchor="middle"><text x="120" y="98">스킬</text><text x="120" y="180">대화 기록</text><text x="340" y="98">답변의 글과 표</text><text x="560" y="98">저장한 결과</text><text x="560" y="180">보고서 원본</text></g>
+<g font-size="11.5" fill="#485A64" text-anchor="middle"><text x="120" y="120">지침, 추가한 파일</text><text x="120" y="202">계정의 설정에 따라 보관</text><text x="340" y="116">옮겨 저장하지 않으면</text><text x="340" y="130">대화 안에만 있음</text><text x="560" y="120">복사, 내려받기 한 것만</text><text x="560" y="202">올린 사본과는 별개</text></g>
+<line x1="430" y1="105" x2="466" y2="105" stroke="#2EA7E0" stroke-width="1.75" marker-end="url(#a3)"/>
+<text x="340" y="284" font-size="12.5" fill="#485A64" text-anchor="middle">같은 계정으로 로그인하면 다른 PC에서도 서버의 스킬을 사용 / 내 컴퓨터의 파일은 그 PC에만 있음</text>
+</svg>
