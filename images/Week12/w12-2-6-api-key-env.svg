@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" font-family="Malgun Gothic, 맑은 고딕, sans-serif">
+  <rect width="1200" height="600" fill="#FFFFFF"/>
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#485A64"/></marker>
+  </defs>
+
+  <!-- left panel -->
+  <rect x="25" y="20" width="560" height="560" rx="14" fill="#FFF5F5" stroke="#D9534F" stroke-width="2"/>
+  <text x="305" y="58" font-size="24" font-weight="bold" fill="#B52B27" text-anchor="middle">① 코드에 인증키를 직접 적는 방식</text>
+
+  <rect x="55" y="85" width="500" height="120" rx="8" fill="#F4F6F8" stroke="#485A64"/>
+  <text x="70" y="110" font-size="15" fill="#485A64">코드 파일 (ecos.py)</text>
+  <text x="70" y="145" font-size="18" font-family="Consolas, monospace" fill="#222">API_KEY = <tspan fill="#B52B27" font-weight="bold">"A1B2C3D4E5"</tspan></text>
+  <text x="70" y="178" font-size="18" font-family="Consolas, monospace" fill="#222">url = f".../{API_KEY}/json/..."</text>
+  <text x="540" y="145" font-size="14" fill="#B52B27" text-anchor="end">← 인증키 자체</text>
+
+  <line x1="305" y1="208" x2="305" y2="250" stroke="#485A64" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="320" y="236" font-size="15" fill="#485A64">코드를 보내면</text>
+
+  <g font-size="17">
+    <rect x="55" y="262" width="500" height="58" rx="8" fill="#FFFFFF" stroke="#D9534F"/>
+    <text x="75" y="298" fill="#222">조원, 메일로 코드 파일 공유</text>
+    <text x="535" y="298" fill="#B52B27" font-weight="bold" text-anchor="end">인증키도 전달</text>
+    <rect x="55" y="332" width="500" height="58" rx="8" fill="#FFFFFF" stroke="#D9534F"/>
+    <text x="75" y="368" fill="#222">GitHub에 코드 게시</text>
+    <text x="535" y="368" fill="#B52B27" font-weight="bold" text-anchor="end">인증키도 공개</text>
+    <rect x="55" y="402" width="500" height="58" rx="8" fill="#FFFFFF" stroke="#D9534F"/>
+    <text x="75" y="438" fill="#222">AI에게 코드의 오류 수정 요청</text>
+    <text x="535" y="438" fill="#B52B27" font-weight="bold" text-anchor="end">인증키도 입력</text>
+  </g>
+
+  <text x="305" y="510" font-size="19" font-weight="bold" fill="#B52B27" text-anchor="middle">코드가 간 모든 곳에 인증키가 남음</text>
+  <text x="305" y="545" font-size="15" fill="#485A64" text-anchor="middle">키를 바꾸려면 코드도 고쳐야 함</text>
+
+  <!-- right panel -->
+  <rect x="615" y="20" width="560" height="560" rx="14" fill="#F2F9FD" stroke="#0086CD" stroke-width="2"/>
+  <text x="895" y="58" font-size="24" font-weight="bold" fill="#006199" text-anchor="middle">② .env 파일에 따로 두는 방식</text>
+
+  <rect x="645" y="85" width="180" height="120" rx="8" fill="#FFFFFF" stroke="#0086CD" stroke-width="2"/>
+  <text x="660" y="110" font-size="15" fill="#006199">.env 파일</text>
+  <text x="660" y="148" font-size="17" font-family="Consolas, monospace" fill="#222">ECOS_KEY=</text>
+  <text x="660" y="174" font-size="17" font-family="Consolas, monospace" fill="#006199" font-weight="bold">A1B2C3D4E5</text>
+  <text x="735" y="225" font-size="14" fill="#006199" text-anchor="middle">내 컴퓨터에만 보관</text>
+
+  <line x1="828" y1="145" x2="900" y2="145" stroke="#485A64" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="864" y="128" font-size="13" fill="#485A64" text-anchor="middle">실행할 때</text>
+  <text x="864" y="170" font-size="13" fill="#485A64" text-anchor="middle">읽음</text>
+
+  <rect x="905" y="85" width="250" height="120" rx="8" fill="#F4F6F8" stroke="#485A64"/>
+  <text x="920" y="110" font-size="15" fill="#485A64">코드 파일 (ecos.py)</text>
+  <text x="920" y="145" font-size="15" font-family="Consolas, monospace" fill="#222">API_KEY = os.getenv(</text>
+  <text x="920" y="168" font-size="15" font-family="Consolas, monospace" fill="#006199" font-weight="bold">    "ECOS_KEY")</text>
+  <text x="920" y="193" font-size="13" fill="#006199">← 이름만 적음</text>
+
+  <line x1="1030" y1="208" x2="1030" y2="250" stroke="#485A64" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="1015" y="236" font-size="15" fill="#485A64" text-anchor="end">코드를 보내면</text>
+
+  <g font-size="17">
+    <rect x="645" y="262" width="500" height="58" rx="8" fill="#FFFFFF" stroke="#0086CD"/>
+    <text x="665" y="298" fill="#222">조원, 메일로 코드 파일 공유</text>
+    <text x="1125" y="298" fill="#006199" font-weight="bold" text-anchor="end">인증키 없음</text>
+    <rect x="645" y="332" width="500" height="58" rx="8" fill="#FFFFFF" stroke="#0086CD"/>
+    <text x="665" y="368" fill="#222">GitHub에 코드 게시</text>
+    <text x="1125" y="368" fill="#006199" font-weight="bold" text-anchor="end">인증키 없음</text>
+    <rect x="645" y="402" width="500" height="58" rx="8" fill="#FFFFFF" stroke="#0086CD"/>
+    <text x="665" y="438" fill="#222">AI에게 코드의 오류 수정 요청</text>
+    <text x="1125" y="438" fill="#006199" font-weight="bold" text-anchor="end">인증키 없음</text>
+  </g>
+
+  <text x="895" y="500" font-size="19" font-weight="bold" fill="#006199" text-anchor="middle">코드에는 이름(ECOS_KEY)만 남음</text>
+  <text x="895" y="530" font-size="15" fill="#485A64" text-anchor="middle">.env 파일은 보내거나 게시하지 않음</text>
+  <text x="895" y="556" font-size="14" fill="#485A64" text-anchor="middle">같은 원리 = Colab의 보안 비밀(7주), .env 읽기 = python-dotenv 등</text>
+</svg>
